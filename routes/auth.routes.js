@@ -64,13 +64,13 @@ router.post("/signup", isLoggedOut, (req, res) => {
       return User.create({ username, email, password: hashedPassword });
     })
     .then((user) => {
-      res.redirect("/auth/login");
+      res.render("/auth/login");
     })
     .catch((error) => {
       if (error instanceof mongoose.Error.ValidationError) {
-        res.status(500).render("auth/signup", { errorMessage: error.message });
+        res.status(500).render("/auth/signup", { errorMessage: error.message });
       } else if (error.code === 11000) {
-        res.status(500).render("auth/signup", {
+        res.status(500).render("/auth/signup", {
           errorMessage:
             "Username and email need to be unique. Provide a valid username or email.",
         });
@@ -153,4 +153,9 @@ router.get("/logout", isLoggedIn, (req, res) => {
   });
 });
 
+router.get("/profile", (req, res) => {
+  res.render("auth/profile", { user: req.session.currentUser });
+});
+
+  
 module.exports = router;

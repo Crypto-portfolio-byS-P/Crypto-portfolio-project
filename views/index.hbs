@@ -2,21 +2,33 @@
 <p>Where you can find all your crypto-info</p>
 
 {{#each coins.data}}
-<img src={{this.image}} alt="" srcset="">
+
+  <div class="col-12 col-md-2 text-center">
+    <div class="card">
+      <img src={{this.image}} class="card-img-top" alt="jacket" />
+      <div class="card-body">
+        <h1>{{this.name}}</h1>
+        <p>Current Price: EUR {{this.current_price}}</p>
+        <p>Price Change % 24h: {{this.price_change_percentage_24h}}</p>
+        <p>Market Cap: EUR {{this.market_cap}}</p>
+      </div>
+    </div>
+  </div>
+
+{{/each}}
+{{!-- <img src={{this.image}} alt="" srcset="">
                 <h1>{{this.name}}</h1>
                 <p>Current Price: EUR {{this.current_price}}</p>
                 <p>Price Change % 24h: {{this.price_change_percentage_24h}}</p>
                 <p>Market Cap: EUR {{this.market_cap}}</p>
-            {{/each}}
+            {{/each}} --}}
 
-
-<H2>Top 7 trending coins in last 24h</H2> 
+<H2>Top 7 trending coins in last 24h</H2>
 
 {{#each coin}}
-<img src={{this.item.image}} alt="" srcset="">
-                <h1>{{this.item.name}}</h1>
-                <p>Current Price: EUR {{this.item.current_price}}</p>
-                <p>Price Change % 24h: {{this.price_change_percentage_24h}}</p>
-                <p>Market Cap: EUR {{this.market_cap}}</p>
-            {{/each}}
-
+  <img src={{this.item.image}} alt="" srcset="" />
+  <h1>{{this.item.name}}</h1>
+  <p>Current Price: EUR {{this.item.current_price}}</p>
+  <p>Price Change % 24h: {{this.price_change_percentage_24h}}</p>
+  <p>Market Cap: EUR {{this.market_cap}}</p>
+{{/each}}

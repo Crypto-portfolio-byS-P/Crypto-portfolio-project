@@ -1,7 +1,22 @@
 <h1>Crypto Link</h1>
 <p>Where you can find all your crypto-info</p>
 
-{{#each data.data}}
-                <h1>{{this.id}}</h1>
-                <p>{{this.name}}</p>
+{{#each coins.data}}
+<img src={{this.image}} alt="" srcset="">
+                <h1>{{this.name}}</h1>
+                <p>Current Price: EUR {{this.current_price}}</p>
+                <p>Price Change % 24h: {{this.price_change_percentage_24h}}</p>
+                <p>Market Cap: EUR {{this.market_cap}}</p>
             {{/each}}
+
+
+<H2>Top 7 trending coins in last 24h</H2> 
+
+{{#each coin}}
+<img src={{this.item.image}} alt="" srcset="">
+                <h1>{{this.item.name}}</h1>
+                <p>Current Price: EUR {{this.item.current_price}}</p>
+                <p>Price Change % 24h: {{this.price_change_percentage_24h}}</p>
+                <p>Market Cap: EUR {{this.market_cap}}</p>
+            {{/each}}
+

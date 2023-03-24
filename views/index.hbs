@@ -1,2 +1,7 @@
 <h1>{{appTitle}} 🚀</h1>
 <p>Welcome Ironhacker!</p>
+
+{{#each data.data}}
+                <h1>{{this.id}}</h1>
+                <p>{{this.name}}</p>
+            {{/each}}

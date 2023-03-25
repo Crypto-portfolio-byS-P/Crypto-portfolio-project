@@ -1,7 +1,8 @@
 <h1>Crypto Link</h1>
 <p>Where you can find all your crypto-info</p>
 
-{{#each coins.data}}
+
+{{#each values.[0].data}}
 
   <div class="col-12 col-md-2 text-center">
     <div class="card">
@@ -16,19 +17,12 @@
   </div>
 
 {{/each}}
-{{!-- <img src={{this.image}} alt="" srcset="">
-                <h1>{{this.name}}</h1>
-                <p>Current Price: EUR {{this.current_price}}</p>
-                <p>Price Change % 24h: {{this.price_change_percentage_24h}}</p>
-                <p>Market Cap: EUR {{this.market_cap}}</p>
-            {{/each}} --}}
+
 
 <H2>Top 7 trending coins in last 24h</H2>
 
-{{#each coin}}
-  <img src={{this.item.image}} alt="" srcset="" />
+{{#each values.[1].data.coins}}
   <h1>{{this.item.name}}</h1>
-  <p>Current Price: EUR {{this.item.current_price}}</p>
-  <p>Price Change % 24h: {{this.price_change_percentage_24h}}</p>
-  <p>Market Cap: EUR {{this.market_cap}}</p>
+  <p>Price BTC: {{this.item.price_btc}}</p>
+  <p>Market Cap Rank: {{this.item.market_cap_rank}}</p>
 {{/each}}

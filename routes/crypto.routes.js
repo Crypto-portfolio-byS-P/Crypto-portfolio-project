@@ -6,5 +6,8 @@ router.get("/charts",  (req, res) => {
     res.send("hello")
   });
 
+  router.get("/news", (req, res) => {
+    res.render("views/news");
+  });
 
 module.exports = router;

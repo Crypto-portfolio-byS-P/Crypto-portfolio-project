@@ -40,14 +40,7 @@ const p2 = axios.get("https://api.coingecko.com/api/v3/search/trending");
 Promise.all([p1, p2])
 .then(values =>{
 
-  // const top_coins = {
-  //   coins: values[0].data
-  // }
-  // const trendingCoins = {
-  //   trending : values[0].data.coins
-  // }
-
-  console.log(values)
+  // console.log(values)
 
   res.render("index", {values});
 })

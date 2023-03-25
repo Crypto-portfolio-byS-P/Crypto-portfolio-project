@@ -8,15 +8,18 @@ const coinSchema = new Schema(
     owned: {
       type: Number,
     },
-    currentPrice: {
-      type: Number,
-    },
-    personalValue: {
-    type: Number,
-    default: function() {
-      return this.owned * this.currentPrice
+    coinId: {
+      type: String,
     }
-  },
+  //   currentPrice: {
+  //     type: Number,
+  //   },
+  //   personalValue: {
+  //   type: Number,
+  //   default: function() {
+  //     return this.owned * this.currentPrice
+  //   }
+  // },
     
   }
 );

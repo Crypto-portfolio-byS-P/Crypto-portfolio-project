@@ -31,8 +31,6 @@ router.post('/portfolio/add', (req, res, next) => {
    image: req.body.image
   }
 
-  console.log(req.body)
-
 // currentUserEmail = req.session.currentUser.email
 
   Coin.create(coin)

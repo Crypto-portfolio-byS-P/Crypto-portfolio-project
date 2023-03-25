@@ -1,6 +1,37 @@
+
 <h1>Crypto Link</h1>
 <p>Where you can find all your crypto-info</p>
 
+{{!-- Crypto tree Map  --}}
+
+<div >
+<script src="https://widgets.coingecko.com/coingecko-coin-heatmap-widget.js"></script>
+<coingecko-coin-heatmap-widget  height="600" locale="en"></coingecko-coin-heatmap-widget>
+</div>
+
+{{!-- Price comparison widget --}}
+
+
+<script src="https://widgets.coingecko.com/coingecko-coin-compare-chart-widget.js"></script>
+<coingecko-coin-compare-chart-widget  coin-ids="bitcoin,ethereum" currency="usd" locale="en"></coingecko-coin-compare-chart-widget>
+
+{{!-- Technical analusis widget  --}}
+<div class="tradingview-widget-container">
+  <div class="tradingview-widget-container__widget"></div>
+  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/BTCUSD/?exchange=BITSTAMP" rel="noopener" target="_blank"><span class="blue-text">Bitcoin analysis</span></a> by TradingView</div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
+  {
+  "interval": "1m",
+  "width": 425,
+  "isTransparent": false,
+  "height": 450,
+  "symbol": "BITSTAMP:BTCUSD",
+  "showIntervalTabs": true,
+  "locale": "en",
+  "colorTheme": "light"
+}
+  </script>
+</div>
 
 {{#each values.[0].data}}
 
@@ -26,3 +57,6 @@
   <p>Price BTC: {{this.item.price_btc}}</p>
   <p>Market Cap Rank: {{this.item.market_cap_rank}}</p>
 {{/each}}
+
+<script src="https://widgets.coingecko.com/coingecko-random-coin-widget.js"></script>
+<coingecko-random-coin-widget  locale="en" width="0"></coingecko-random-coin-widget>

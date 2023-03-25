@@ -30,8 +30,12 @@ router.get("/", (req, res, next) => {
 //   next(e);
 // });
   
-const p1 = axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&ids=bitcoin%2C%20ethereum%2C%20tether%2C%20binancecoin%2C%20usd-coin%2C%20cardano%2C%20dogecoin%2C%20matic-network%2C%20solana&order=market_cap_desc&per_page=100&page=1&sparkline=false");
+// const p1 = axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&ids=bitcoin%2C%20ethereum%2C%20tether%2C%20binancecoin%2C%20usd-coin%2C%20cardano%2C%20dogecoin%2C%20matic-network%2C%20solana&order=market_cap_desc&per_page=100&page=1&sparkline=false");
+const p1 = axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=20&page=1&sparkline=false");
 const p2 = axios.get("https://api.coingecko.com/api/v3/search/trending");
+
+
+
 
 Promise.all([p1, p2])
 .then(values =>{
@@ -43,7 +47,7 @@ Promise.all([p1, p2])
   //   trending : values[0].data.coins
   // }
 
-  // console.log(values)
+  console.log(values)
 
   res.render("index", {values});
 })

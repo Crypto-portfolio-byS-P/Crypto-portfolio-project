@@ -10,16 +10,16 @@ const coinSchema = new Schema(
     },
     coinId: {
       type: String,
+    },
+    addedBy: {
+      type: String,
+    },
+    purchasedAt: {
+      type: Number,
+    },
+    image: {
+      type: String,
     }
-  //   currentPrice: {
-  //     type: Number,
-  //   },
-  //   personalValue: {
-  //   type: Number,
-  //   default: function() {
-  //     return this.owned * this.currentPrice
-  //   }
-  // },
     
   }
 );

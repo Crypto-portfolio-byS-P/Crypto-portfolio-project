@@ -5,6 +5,7 @@ const axios = require('axios')
 /* GET home page */
 router.get("/", (req, res, next) => {
 
+
   //Getting requested coins from API(coins manually enered in documentation)
 
 
@@ -40,7 +41,7 @@ const p2 = axios.get("https://api.coingecko.com/api/v3/search/trending");
 Promise.all([p1, p2])
 .then(values =>{
 
-  // console.log(values)
+  // console.log(req.user._id)
 
   res.render("index", {values});
 })

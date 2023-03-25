@@ -33,8 +33,8 @@
 }
   </script>
 </div> --}}
+{{log req.session.currentUser}}
 
-{{log values.[0].data}}
 
 {{#each values.[0].data}}
 
@@ -48,13 +48,18 @@
         <p>Market Cap: EUR {{this.market_cap}}</p>
         
         {{!--Form for adding coin to the portfolio  --}}
-        <form method="POST" action="/crypto/portfolio">
+        <form method="POST" action="/crypto/portfolio/add">
 
     <label> Amount owned:
         <input type="number" name="amount" />
     </label>
+    <label> Price Purchased At:
+        <input type="number" name="purchasedAt" />
+    </label>
         <input type="hidden" name="coinName" value="{{this.name}}" />
         <input type="hidden" name="coinId" value="{{this.id}}" />
+        <input type="hidden" name="image" value="{{this.image}}" />
+        {{!-- <input type="hidden" name="CreatedBy" value="{{req.session.currentUser.email}}" /> --}}
    
 
     <button type="submit"> Add to portfolio </button>

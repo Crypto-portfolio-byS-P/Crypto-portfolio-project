@@ -8,6 +8,11 @@ router.get("/charts",  (req, res) => {
     res.render("charts")
   });
 
+  router.get("/news", (req, res) => {
+    // res.render("views/index");
+    res.render("news");
+  });
+
   router.get("/portfolio", (req, res) => {
     res.render("portfolio/portfolio");
   });

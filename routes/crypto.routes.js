@@ -31,12 +31,12 @@ router.post('/portfolio/add', (req, res, next) => {
    image: req.body.image
   }
 
-// currentUserEmail = req.session.currentUser.email
-
   Coin.create(coin)
   .then(coinInfoFromDb =>{
     // console.log(coinInfoFromDb)
+    res.redirect("/crypto/portfolio")
     res.render("portfolio/portfolio", {coinInfoFromDb})
+    
   })
 })
 

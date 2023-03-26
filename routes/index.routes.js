@@ -41,7 +41,10 @@ const p2 = axios.get("https://api.coingecko.com/api/v3/search/trending");
 Promise.all([p1, p2])
 .then(values =>{
 
-  // console.log(req.user._id)
+
+
+  // req.session.apiValues = values
+  // console.log(req.session.apiValues[0].data)
 
   res.render("index", {values});
 })
@@ -51,5 +54,8 @@ Promise.all([p1, p2])
   });
 
 });
+
+
+
 
 module.exports = router;

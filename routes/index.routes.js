@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const axios = require('axios');
+const isLoggedIn = require("../middleware/isLoggedIn");
 // const { response } = require('../app');
 
 async function getData() {

@@ -11,6 +11,11 @@ router.get("/charts", (req, res) => {
   res.render("charts");
 });
 
+router.get("/news", (req, res) => {
+  // res.render("views/index");
+  res.render("news");
+});
+
 // Add to portfolio: Display form
 
 router.post("/portfolio/add", (req, res, next) => {

@@ -1,15 +1,27 @@
 <h1>This is your portfolio</h1>
 {{log}}
 
-{{#each coin}}
-<img src={{this.image}} alt="" srcset="">
-<h1>{{this.name}}</h1>
-<p>Amount owned: {{this.owned}}</p>
-<p>Purchased at: EUR {{this.purchasedAt}}</p>
-<form action="/crypto/{{this._id}}/edit" method="GET" />
-<button>Edit</button>
-</form>
-<form action="/crypto/{{_id}}/delete" method="POST">
-    <button>Delete</button>
-</form>
+
+    <div class="container text-center">
+        <div class="row">
+    
+    {{#each coin}}
+            <div class="col-12 col-md-4">
+                <div class="card">
+        <img src={{this.image}} alt="" srcset="" class="card-img-top">
+        <div class="card-body"></div>
+        <h1>{{this.name}}</h1>
+        <p>Amount owned: {{this.owned}}</p>
+        <p>Purchased at: EUR {{this.purchasedAt}}</p>
+        <form action="/crypto/{{this._id}}/edit" method="GET" />
+        <button class="btn btn-dark btn-outline-secondary">Edit</button>
+        </form>
+        <form action="/crypto/{{_id}}/delete" method="POST">
+            <button class="btn btn-dark btn-outline-secondary">Delete</button>
+        </form>
+    </div>
+</div>
 {{/each}}
+</div>
+</div>
+

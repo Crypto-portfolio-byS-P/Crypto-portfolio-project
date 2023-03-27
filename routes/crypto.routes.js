@@ -57,6 +57,8 @@ router.get(`/:coinId/edit`, isLoggedIn, (req, res, next) => {
 
 });
 
+
+
 router.get('/portfolio', (req, res, next) => {
 
   if (req.session.currentUser) {
@@ -64,22 +66,8 @@ router.get('/portfolio', (req, res, next) => {
   Coin.findByIdAndUpdate(coinId, { owned, purchasedAt }, { new: true })
     .then(() => res.redirect(`/crypto/portfolio`))
     .catch((error) => {res.redirect("/crypto/portfolio");});
-});
-
-//POST Delete coin
-router.post(`/:coinId/delete`, isLoggedIn, (req, res, next) => {
-  const { coinId } = req.params
-
-  Coin.findByIdAndDelete(coinId)
-    .then(() => res.redirect(`/crypto/portfolio`))
-    .catch((error) => next(error));
-});
-
-
-
-
-module.exports = router;
-
+  }
+  
     Coin.find({ addedBy: req.session.currentUser.email })
       .then(coinsInfoFromDb => {
 
@@ -100,8 +88,20 @@ module.exports = router;
 
       })
 
-  } else {
-    res.redirect('/login')
-  }
-})
+});
+
+//POST Delete coin
+router.post(`/:coinId/delete`, isLoggedIn, (req, res, next) => {
+  const { coinId } = req.params
+
+  Coin.findByIdAndDelete(coinId)
+    .then(() => res.redirect(`/crypto/portfolio`))
+    .catch((error) => next(error));
+});
+
+
+
+
 module.exports = router;
+
+

@@ -16,12 +16,14 @@ async function getData() {
 /* GET home page */
 router.get("/", async (req, res, next) => {
 
-  let p1 = null
-  let p2 = null
+  let p1 = []
+  let p2 = []
+
+  console.log('req.session.lastRequestTime', req.session.lastRequestTime)
 
   // Do I have a last request time?
   if (req.session.lastRequestTime) {
-    // I have a last request time, does the time has past?
+    // I have a last request time, does the time expired?
     if (Date.now() - req.session.lastRequestTime > 60000) {
 
       const responseCall = await getData()

@@ -1,0 +1,13 @@
+<h2>Edit: {{coin.name}}</h2>
+
+<form action="/portfolio/{{coin._id}}/edit" method="post">
+    <label> Owned:
+        <input type="number" name="owned" min="1" value="{{coin.owned}}" />
+    </label>
+
+    <label> Purchased at:
+        <input type="number" name="purchasedAt" min="0" value="{{coin.purchasedAt}}" />
+    </label>
+
+    <button type="submit">Save changes</button>
+</form>

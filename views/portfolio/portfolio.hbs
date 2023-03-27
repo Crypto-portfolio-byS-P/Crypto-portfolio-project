@@ -6,7 +6,10 @@
 <h1>{{this.name}}</h1>
 <p>Amount owned: {{this.owned}}</p>
 <p>Purchased at: EUR {{this.purchasedAt}}</p>
-<form action="/portfolio/{{this._id}}/edit" method="GET">
-    <button>Edit</button>
+<form action="/crypto/{{this._id}}/edit" method="GET" />
+<button>Edit</button>
+</form>
+<form action="/crypto/{{_id}}/delete" method="POST">
+    <button>Delete</button>
 </form>
 {{/each}}

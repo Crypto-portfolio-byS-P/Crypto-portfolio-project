@@ -41,15 +41,17 @@ router.get(`/portfolio`, (req, res, next) => {
 });
 
 //GET Edit coin
-router.get(`/:coinId/edit`, (req, res, next) => {
+router.get(`/:coinId/edit`, isLoggedIn, (req, res, next) => {
   const { coinId } = req.params;
 
-  Coin.findById(coinId)
+  Coin.findByIdAndUpdate(coinId)
     .then((coinToEdit) => {
-      console.log(coinToEdit);
-      res.render("/portfolio/coin-update", {coinToEdit });
+      coinDetails = coinToEdit;
+      res.render("portfolio/coin-update", {coin : coinToEdit });
     })
     .catch((error) => next(error));
+
+
 });
 
 //POST Edit coin
@@ -58,17 +60,20 @@ router.post(`/:coinId/edit`, (req, res, next) => {
   const { owned, purchasedAt } = req.body;
 
   Coin.findByIdAndUpdate(coinId, { owned, purchasedAt }, { new: true })
-    .then(() => res.redirect(`/portfolio`))
-    .catch((error) => next(error));
+    .then(() => res.redirect(`/crypto/portfolio`))
+    .catch((error) => {res.redirect("/crypto/portfolio");});
 });
 
 //POST Delete coin
-router.post(`/:coinId/delete`, (req, res, next) => {
-  const { coinId } = req.params;
+router.post(`/:coinId/delete`, isLoggedIn, (req, res, next) => {
+  const { coinId } = req.params
 
   Coin.findByIdAndDelete(coinId)
-    .then(() => res.redirect("/portfolio"))
+    .then(() => res.redirect(`/crypto/portfolio`))
     .catch((error) => next(error));
 });
+
+
+
 
 module.exports = router;

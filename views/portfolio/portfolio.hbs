@@ -1,6 +1,6 @@
 <h1>This is your portfolio</h1>
 
-{{log coin}}
+{{!-- {{log coin}} --}}
 
 
     <div class="container text-center">
@@ -14,6 +14,7 @@
         <h1>{{this.name}}</h1>
         <p>Amount owned: {{this.owned}}</p>
         <p>Purchased at: EUR {{this.purchasedAt}}</p>
+        <p>Current Holdings Value: EUR{{this.currentValue}}</p>
         <form action="/crypto/{{this._id}}/edit" method="GET" />
         <button class="btn btn-dark btn-outline-secondary">Edit</button>
         </form>
@@ -25,4 +26,6 @@
 {{/each}}
 </div>
 </div>
+
+<h1>Total Portfolio Value: EUR{{totalPortfolioValue}}</h1>
 

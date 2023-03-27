@@ -51,7 +51,7 @@ router.get(`/:coinId/edit`, isLoggedIn, (req, res, next) => {
   Coin.findByIdAndUpdate(coinId)
     .then((coinToEdit) => {
       coinDetails = coinToEdit;
-      res.render("portfolio/coin-update", {coin : coinToEdit });
+      res.render("portfolio/coin-update", { coin: coinToEdit });
     })
     .catch((error) => next(error));
 
@@ -64,32 +64,39 @@ router.post(`/:coinId/edit`, (req, res, next) => {
 
   Coin.findByIdAndUpdate(coinId, { owned, purchasedAt }, { new: true })
     .then(() => res.redirect(`/crypto/portfolio`))
-    .catch((error) => {res.redirect("/crypto/portfolio");});
+    .catch((error) => { res.redirect("/crypto/portfolio"); });
 });
 
 
 
 router.get('/portfolio', (req, res, next) => {
-  
-    Coin.find({ addedBy: req.session.currentUser.email })
-      .then(coinsInfoFromDb => {
 
-        let resultsArr = []
+  Coin.find({ addedBy: req.session.currentUser.email })
+    .then(coinsInfoFromDb => {
 
-        for (let i = 0; i < req.session.p1.length; i++) {
-          const firstListObject = req.session.p1[i]
-          for (let j = 0; j < coinsInfoFromDb.length; j++) {
-            const portfolioListObject = coinsInfoFromDb[j]
-            console.log(portfolioListObject)
-            if (firstListObject.name == portfolioListObject.name) {
-              let newObj = { ...portfolioListObject.toObject(), price: firstListObject.current_price, currentValue: firstListObject.current_price * portfolioListObject.owned }
-              resultsArr.push(newObj)
-            }
+      let resultsArr = []
+      let totalPortfolioValue = 0;
+      for (let i = 0; i < req.session.p1.length; i++) {
+        const firstListObject = req.session.p1[i]
+        for (let j = 0; j < coinsInfoFromDb.length; j++) {
+          const portfolioListObject = coinsInfoFromDb[j]
+          if (firstListObject.name == portfolioListObject.name) {
+            totalPortfolioValue += firstListObject.current_price * portfolioListObject.owned
+    
+            let newObj = { ...portfolioListObject.toObject(), price: firstListObject.current_price, currentValue: firstListObject.current_price * portfolioListObject.owned }
+            
+            resultsArr.push(newObj)
           }
+          
         }
-        res.render("portfolio/portfolio", { coin: resultsArr, })
+        
+      }
 
-      })
+      console.log("total value is **********",totalPortfolioValue)
+
+      res.render("portfolio/portfolio", { coin: resultsArr, totalPortfolioValue })
+
+    })
 
 });
 

@@ -1,10 +1,12 @@
 <h1>This is your portfolio</h1>
-
-{{log }}
+{{log}}
 
 {{#each coin}}
 <img src={{this.image}} alt="" srcset="">
 <h1>{{this.name}}</h1>
 <p>Amount owned: {{this.owned}}</p>
 <p>Purchased at: EUR {{this.purchasedAt}}</p>
+<form action="/portfolio/{{this._id}}/edit" method="GET">
+    <button>Edit</button>
+</form>
 {{/each}}

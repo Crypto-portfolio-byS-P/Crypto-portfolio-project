@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Coin = require('../models/Coin.model');
 const mongoose = require("mongoose");
+const isLoggedIn = require("../middleware/isLoggedIn.js")
 
 // let currentUserEmail
 
@@ -60,13 +61,6 @@ router.get(`/:coinId/edit`, isLoggedIn, (req, res, next) => {
 
 
 router.get('/portfolio', (req, res, next) => {
-
-  if (req.session.currentUser) {
-
-  Coin.findByIdAndUpdate(coinId, { owned, purchasedAt }, { new: true })
-    .then(() => res.redirect(`/crypto/portfolio`))
-    .catch((error) => {res.redirect("/crypto/portfolio");});
-  }
   
     Coin.find({ addedBy: req.session.currentUser.email })
       .then(coinsInfoFromDb => {
@@ -79,7 +73,7 @@ router.get('/portfolio', (req, res, next) => {
             const portfolioListObject = coinsInfoFromDb[j]
             console.log(portfolioListObject)
             if (firstListObject.name == portfolioListObject.name) {
-              let newObj = { ...portfolioListObject, price: firstListObject.current_price, currentValue: firstListObject.current_price * portfolioListObject.owned }
+              let newObj = { ...portfolioListObject.toObject(), price: firstListObject.current_price, currentValue: firstListObject.current_price * portfolioListObject.owned }
               resultsArr.push(newObj)
             }
           }

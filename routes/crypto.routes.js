@@ -58,6 +58,15 @@ router.get(`/:coinId/edit`, isLoggedIn, (req, res, next) => {
 
 });
 
+router.post(`/:coinId/edit`, (req, res, next) => {
+  const { coinId } = req.params;
+  const { owned, purchasedAt } = req.body;
+
+  Coin.findByIdAndUpdate(coinId, { owned, purchasedAt }, { new: true })
+    .then(() => res.redirect(`/crypto/portfolio`))
+    .catch((error) => {res.redirect("/crypto/portfolio");});
+});
+
 
 
 router.get('/portfolio', (req, res, next) => {

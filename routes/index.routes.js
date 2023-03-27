@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const axios = require('axios');
-const isLoggedIn = require("../middleware/isLoggedIn");
 // const { response } = require('../app');
 
 async function getData() {
@@ -25,7 +24,7 @@ router.get("/", async (req, res, next) => {
   // Do I have a last request time?
   if (req.session.lastRequestTime) {
     // I have a last request time, does the time expired?
-    if (Date.now() - req.session.lastRequestTime > 1000 * 60 * 60) {
+    if (Date.now() - req.session.lastRequestTime > 600000) {
 
       const responseCall = await getData()
 

@@ -76,13 +76,17 @@ router.get('/portfolio', (req, res, next) => {
 
       let resultsArr = []
       let totalPortfolioValue = 0;
+      let totalSpent = 0;
+      let differencePercent = 0;
       for (let i = 0; i < req.session.p1.length; i++) {
         const firstListObject = req.session.p1[i]
         for (let j = 0; j < coinsInfoFromDb.length; j++) {
           const portfolioListObject = coinsInfoFromDb[j]
           if (firstListObject.name == portfolioListObject.name) {
             totalPortfolioValue += ((firstListObject.current_price).toFixed(2) * (portfolioListObject.owned).toFixed(2))
-    
+            totalSpent +=portfolioListObject.purchasedAt * portfolioListObject.owned
+
+            
             let newObj = { ...portfolioListObject.toObject(), price: firstListObject.current_price, currentValue: firstListObject.current_price * portfolioListObject.owned }
             
             resultsArr.push(newObj)
@@ -91,10 +95,13 @@ router.get('/portfolio', (req, res, next) => {
         }
         
       }
-
+ 
+      differencePercent = ((totalPortfolioValue).toFixed(2) - (totalSpent).toFixed(2)) / totalSpent.toFixed(2) * 100
       console.log("total value is **********",totalPortfolioValue)
+      console.log("total spent", totalSpent)
+      console.log("difference is", differencePercent)
 
-      res.render("portfolio/portfolio", { coin: resultsArr, totalPortfolioValue, session: req.session})
+      res.render("portfolio/portfolio", { coin: resultsArr, totalPortfolioValue, differencePercent})
 
     })
 

@@ -17,7 +17,7 @@ router.get("/charts",  (req, res) => {
 
 // Add to portfolio: Display form
 
-router.post('/portfolio/add', (req, res, next) => {
+router.post('/portfolio/add', async (req, res, next) => {
 
   // console.log(req.session.currentUser)
 
@@ -31,13 +31,12 @@ router.post('/portfolio/add', (req, res, next) => {
    image: req.body.image
   }
 
-  Coin.create(coin)
-  .then(coinInfoFromDb =>{
-    // console.log(coinInfoFromDb)
-    res.redirect("/crypto/portfolio")
-    res.render("portfolio/portfolio", {coinInfoFromDb})
-    
-  })
+  const coinInfoFromDb = await Coin.create(coin)
+  
+  console.log('---->', coinInfoFromDb.data)
+  res.redirect("/crypto/portfolio")
+  res.render("portfolio/portfolio", {coinInfoFromDb})
+
 })
 
 
@@ -49,7 +48,23 @@ console.log(req.session
 
   Coin.find({addedBy: req.session.currentUser.email})
   .then(coinsInfoFromDb =>{
-    res.render("portfolio/portfolio", {coin: coinsInfoFromDb})
+
+let resultsArr =[]
+
+    for (let i =0; i < req.session.p1.length; i++ ){
+      const firstListObject = req.session.p1[i]
+      for (let j = 0; j < coinsInfoFromDb.length; j++){
+        const portfolioListObject = coinsInfoFromDb[j]
+        console.log(portfolioListObject)
+        if(firstListObject.name == portfolioListObject.name ){
+          let newObj = {...portfolioListObject, price: firstListObject.current_price, currentValue: firstListObject.current_price * portfolioListObject.owned }
+          resultsArr.push(newObj)
+        }
+      }
+    }
+    res.render("portfolio/portfolio", {coin: resultsArr,})
+
+
   })
 })
 module.exports = router;

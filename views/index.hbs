@@ -1,91 +1,128 @@
-
 <h1>Crypto Link</h1>
 <p>Where you can find all your crypto-info</p>
 
-{{!-- Crypto tree Map  --}}
+{{!-- Crypto tree Map --}}
 
-{{!-- <div >
-<script src="https://widgets.coingecko.com/coingecko-coin-heatmap-widget.js"></script>
-<coingecko-coin-heatmap-widget  height="600" locale="en"></coingecko-coin-heatmap-widget>
-</div> --}}
+<div>
+  <script src="https://widgets.coingecko.com/coingecko-coin-heatmap-widget.js"></script>
+  <coingecko-coin-heatmap-widget height="600" locale="en"></coingecko-coin-heatmap-widget>
+</div>
 
 {{!-- Price comparison widget --}}
 
 
-{{!-- <script src="https://widgets.coingecko.com/coingecko-coin-compare-chart-widget.js"></script>
-<coingecko-coin-compare-chart-widget  coin-ids="bitcoin,ethereum" currency="usd" locale="en"></coingecko-coin-compare-chart-widget> --}}
+{{!--
+<script src="https://widgets.coingecko.com/coingecko-coin-compare-chart-widget.js"></script>
+<coingecko-coin-compare-chart-widget coin-ids="bitcoin,ethereum" currency="usd"
+  locale="en"></coingecko-coin-compare-chart-widget> --}}
 
-{{!-- Technical analysis widget  --}}
+{{!-- Technical analysis widget --}}
 
 {{!-- <div class="tradingview-widget-container">
   <div class="tradingview-widget-container__widget"></div>
-  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/BTCUSD/?exchange=BITSTAMP" rel="noopener" target="_blank"><span class="blue-text">Bitcoin analysis</span></a> by TradingView</div>
-  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
-  {
-  "interval": "1m",
-  "width": 425,
-  "isTransparent": false,
-  "height": 450,
-  "symbol": "BITSTAMP:BTCUSD",
-  "showIntervalTabs": true,
-  "locale": "en",
-  "colorTheme": "light"
-}
-  </script>
+  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/BTCUSD/?exchange=BITSTAMP"
+      rel="noopener" target="_blank"><span class="blue-text">Bitcoin analysis</span></a> by TradingView</div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js"
+    async>
+      {
+        "interval": "1m",
+          "width": 425,
+            "isTransparent": false,
+              "height": 450,
+                "symbol": "BITSTAMP:BTCUSD",
+                  "showIntervalTabs": true,
+                    "locale": "en",
+                      "colorTheme": "light"
+      }
+    </script>
 </div> --}}
 {{log req.session.currentUser}}
 
+<div class="container">
+  {{#each values.[0]}}
+  <div class="row">
 
-{{#each values.[0].data}}
+    <div class="col-3 text-center">
+      <img src={{this.image}} class="card-img-top" alt="jacket" width="100" />
+    </div>
 
-  <div class="col-12 col-md-2 text-center">
-    <div class="card">
-      <img src={{this.image}} class="card-img-top" alt="jacket" />
-      <div class="card-body">
-        <h1>{{this.name}}</h1>
-        <p>Current Price: EUR {{this.current_price}}</p>
-        <p>Price Change % 24h: {{this.price_change_percentage_24h}}</p>
-        <p>Market Cap: EUR {{this.market_cap}}</p>
-        
-        {{!--Form for adding coin to the portfolio  --}}
-        <form method="POST" action="/crypto/portfolio/add">
-      
+    <div class="col">
+      <h1>{{this.name}}</h1>
+    </div>
 
-    <label> Amount owned:
-        <input type="number" name="amount" />
-    </label>
-    <label> Price Purchased At:
-        <input type="number" name="purchasedAt" />
-    </label>
+    <div class="col">
+      <p>Current Price: EUR {{this.current_price}}</p>
+    </div>
+
+    <div class="col">
+      <p>Price Change % 24h: %{{this.price_change_percentage_24h}}</p>
+    </div>
+
+    <div class="col">
+      <p>Market Cap: EUR {{this.market_cap}}</p>
+    </div>
+
+    <div class="col-3">
+      {{!--Form for adding coin to the portfolio --}}
+      <form method="POST" action="/crypto/portfolio/add">
+
+
+        <label> Amount owned:
+          <input type="number" name="amount" />
+        </label>
+        <label> Price Purchased At:
+          <input type="number" name="purchasedAt" />
+        </label>
         <input type="hidden" name="coinName" value="{{this.name}}" />
         <input type="hidden" name="coinId" value="{{this.id}}" />
         <input type="hidden" name="image" value="{{this.image}}" />
         {{!-- <input type="hidden" name="CreatedBy" value="{{req.session.currentUser.email}}" /> --}}
-   
 
-    <button type="submit"> Add to portfolio </button>
-</form>
 
-      </div>
+        <button type="submit"> Add to portfolio </button>
+      </form>
     </div>
-  </div>
 
-{{/each}}
+  </div>
+  {{/each}}
+</div>
+
+
 
 
 <H2>Top 7 trending coins in last 24h</H2>
 
-{{#each values.[1].data.coins}}
+
 <div class="container">
   <div class="row">
-    <div class="col">
-  <h1>{{this.item.name}}</h1>
-  <p>Price BTC: {{this.item.price_btc}}</p>
-  <p>Market Cap Rank: {{this.item.market_cap_rank}}</p>
-  </div>
-  </div>
-  </div>
-{{/each}}
 
-<script src="https://widgets.coingecko.com/coingecko-random-coin-widget.js"></script>
-<coingecko-random-coin-widget  locale="en" width="0"></coingecko-random-coin-widget>
+    {{#each values.[1].data.coins}}
+    <div class="col-3">
+      <h1>{{this.item.name}}</h1>
+    </div>
+
+    <p>Price BTC: {{this.item.price_btc}}</p>
+  </div>
+  <div class="col-3">
+    <p>Market Cap Rank: {{this.item.market_cap_rank}}</p>
+  </div>
+  {{/each}}
+
+
+</div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <h1>Hello</h1>
+    </div>
+    <div class="col-3">
+      <h1>Hello</h1>
+    </div>
+    <div class="col-3">
+      <h1>Hello</h1>
+    </div>
+  </div>
+</div>

@@ -1,57 +1,59 @@
 const express = require('express');
 const router = express.Router();
-const axios = require('axios')
+const axios = require('axios');
+// const { response } = require('../app');
+
+async function getData() {
+  const data = await Promise.all([
+    axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=20&page=1&sparkline=false"),
+    axios.get("https://api.coingecko.com/api/v3/search/trending")
+  ])
+
+  console.log(data[0])
+  return data.map(response => response.data)
+}
 
 /* GET home page */
-router.get("/", (req, res, next) => {
+router.get("/", async (req, res, next) => {
 
+  let p1 = []
+  let p2 = []
 
-  //Getting requested coins from API(coins manually enered in documentation)
+  console.log('req.session.lastRequestTime', req.session.lastRequestTime)
 
+  // Do I have a last request time?
+  if (req.session.lastRequestTime) {
+    // I have a last request time, does the time expired?
+    if (Date.now() - req.session.lastRequestTime > 60000) {
 
-//   axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&ids=bitcoin%2C%20ethereum%2C%20tether%2C%20binancecoin%2C%20usd-coin%2C%20cardano%2C%20dogecoin%2C%20matic-network%2C%20solana&order=market_cap_desc&per_page=100&page=1&sparkline=false")
-// .then(requestedCoinsFromApi => { 
-//   console.log(requestedCoinsFromApi)
-//   res.render("index", {coins: requestedCoinsFromApi});
-// })
-// .catch(e => {
-//   console.log("error creating new book", e);
-//   next(e);
-// });
+      const responseCall = await getData()
 
-//Getting top 7 trending coins in last 24h
+      p1 = responseCall[0]
+      p2 = responseCall[1]
 
-// axios.get("https://api.coingecko.com/api/v3/search/trending")
-// .then(trendingCoins => { 
-//   console.log(trendingCoins.data.coins)
-//   // res.render("index", {coin: trendingCoins.data.coins});
-// })
-// .catch(e => {
-//   console.log("error creating new book", e);
-//   next(e);
-// });
-  
-// const p1 = axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&ids=bitcoin%2C%20ethereum%2C%20tether%2C%20binancecoin%2C%20usd-coin%2C%20cardano%2C%20dogecoin%2C%20matic-network%2C%20solana&order=market_cap_desc&per_page=100&page=1&sparkline=false");
-const p1 = axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=20&page=1&sparkline=false");
-const p2 = axios.get("https://api.coingecko.com/api/v3/search/trending");
+      req.session.lastRequestTime = Date.now()
+      req.session.p1 = p1
+      req.session.p2 = p2
 
+    } else {
+      // I have a last request time, we are still on time
+      p1 = req.session.p1
+      p2 = req.session.p2
+    }
+  } else {
+    // I don't have a last request time
+    const responseCall = await getData()
 
+    p1 = responseCall[0]
+    p2 = responseCall[1]
 
+    req.session.lastRequestTime = Date.now()
+    req.session.p1 = p1
+    req.session.p2 = p2
+  }
 
-Promise.all([p1, p2])
-.then(values =>{
+  res.render("index", { values: [p1, p2] });
 
-
-
-  // req.session.apiValues = values
-  // console.log(req.session.apiValues[0].data)
-
-  res.render("index", {values});
-})
-.catch(e => {
-    console.log("error creating new book", e);
-    next(e);
-  });
 
 });
 
@@ -59,3 +61,10 @@ Promise.all([p1, p2])
 
 
 module.exports = router;
+
+// const myArray = [{x:1, data: 1}, {x:2, data: 2}, {x:3, data: 3}]
+// const myNewArray = myArray.map(x => x.data)
+// console.log('myNewArray', myNewArray)
+
+
+// [{x:1, data: 1}, {x:2, data: 2}, {x:3, data: 3}] => [?, ?, ?]

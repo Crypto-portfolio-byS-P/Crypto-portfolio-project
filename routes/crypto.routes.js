@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 const Coin = require('../models/Coin.model');
 const mongoose = require("mongoose");
-const isLoggedIn = require("../middleware/isLoggedIn.js")
+const isLoggedIn = require("../middleware/isLoggedIn.js");
+const Watchlist = require("../models/Watchlist.model");
 
 // let currentUserEmail
 
@@ -42,7 +43,21 @@ router.post('/portfolio/add', async (req, res, next) => {
   res.redirect("/crypto/portfolio")
   res.render("portfolio/portfolio", { coinInfoFromDb })
 
-})
+});
+
+// router.post('/portfolio/add', function(req, res) {
+//   const coinId = req.body.coinId;
+//   req.user.watchlist.push(coinId);
+
+//   req.user.save(function (err) {
+//     if (err) {
+//       console.error(err);
+//       res.status(500).send("Error saving");
+//     } else {
+//       res.redirect("/");
+//     }
+//   });
+// });
 
 //GET Edit coin
 router.get(`/:coinId/edit`, isLoggedIn, (req, res, next) => {
@@ -108,7 +123,7 @@ router.get('/portfolio', (req, res, next) => {
 });
 
 //POST Delete coin
-router.post(`/:coinId/delete`, isLoggedIn, (req, res, next) => {
+router.post(`/:coinId/delete`, isLoggedIn, (req, res) => {
   const { coinId } = req.params
 
   Coin.findByIdAndDelete(coinId)

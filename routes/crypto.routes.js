@@ -111,10 +111,12 @@ router.get('/portfolio', (req, res, next) => {
         
       }
  
-      differencePercent = ((totalPortfolioValue).toFixed(2) - (totalSpent).toFixed(2)) / totalSpent.toFixed(2) * 100
+      differencePercent = (((totalPortfolioValue) - (totalSpent)) / totalSpent * 100).toFixed(0)
       console.log("total value is **********",totalPortfolioValue)
-      console.log("total spent", totalSpent)
+      console.log("total spent", totalSpent.toFixed(2))
       console.log("difference is", differencePercent)
+
+
 
       res.render("portfolio/portfolio", { coin: resultsArr, totalPortfolioValue, differencePercent})
 

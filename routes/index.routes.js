@@ -20,11 +20,14 @@ router.get("/", async (req, res, next) => {
   let p2 = []
 
   console.log('req.session.lastRequestTime', req.session.lastRequestTime)
+  console.log('Date.now()', Date.now())
+  console.log('Date.now() - req.session.lastRequestTime', Date.now() - req.session.lastRequestTime )
+
 
   // Do I have a last request time?
   if (req.session.lastRequestTime) {
     // I have a last request time, does the time expired?
-    if (Date.now() - req.session.lastRequestTime > 600000) {
+    if (Date.now() - req.session.lastRequestTime > 1000 * 60 * 60) {
 
       const responseCall = await getData()
 

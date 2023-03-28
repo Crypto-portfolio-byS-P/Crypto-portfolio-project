@@ -3,6 +3,7 @@ const router = express.Router();
 const Coin = require('../models/Coin.model');
 const mongoose = require("mongoose");
 const isLoggedIn = require("../middleware/isLoggedIn.js")
+const axios = require("axios");
 
 // let currentUserEmail
 
@@ -11,10 +12,6 @@ router.get("/charts", (req, res) => {
   res.render("charts")
 });
 
-router.get("/news", (req, res) => {
-  // res.render("views/index");
-  res.render("news");
-});
 // router.get("/portfolio", (req, res) => {
 //   res.render("portfolio/portfolio");
 // });
@@ -118,7 +115,18 @@ router.post(`/:coinId/delete`, isLoggedIn, (req, res, next) => {
     .catch((error) => next(error));
 });
 
+router.get("/news", (req, res) => {
+  axios.get("https://newsapi.org/v2/everything?q=crypto&sortBy=publishedAt&language=en&apiKey=42a0cfb20870473e851473bcecc219e0")
+    .then((response) => {
+      res.render("news", { articles: response.data.articles });
+    })
+    .catch((error) => {
+      console.log(error);
+      res.render("news", { articles: null });
+    });
+});
 
+module.exports = router;
 
 
 module.exports = router;

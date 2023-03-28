@@ -1,34 +1,42 @@
 <div id="login-form">
-  <h2>Log In</h2>
-  <form action="/auth/login" method="POST">
-    <label> Email
-      <input type="email" name="email" placeholder="Your email" />
-    </label>
 
-    <label> Password
-      <input type="password" name="password" placeholder="Your password" />
-    </label>
+  <section class="vh-100 bg-image" style="dark">
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+      <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+            <div class="card" style="border-radius: 15px;">
+              <div class="card-body p-5">
+                <h2 class="text-uppercase text-center mb-5">Log in</h2>
 
-    <button type="submit" class="btn btn-dark">Log In</button>
-{{!-- <form action="/auth/login" method="POST">
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1">
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button> --}}
+                <form action="/auth/login" method="POST">
 
+                  <div class="form-outline mb-4">
+                    <input type="email" name="email" class="form-control form-control-lg" />
+                    <label class="form-label">Email</label>
+                  </div>
 
-    {{#if errorMessage}}
-      <p class="error">{{errorMessage}}</p>
-    {{/if}}
-  </form>
-  <div class="info">
-    <p>If you don't have an account, click <a href="/auth/signup">here</a> to create one.</p>
-  </div>
-</div>
+                  <div class="form-outline mb-4">
+                    <input type="password" name="password" class="form-control form-control-lg" />
+                    <label class="form-label">Password</label>
+                  </div>
+
+                  <div class="d-flex justify-content-center">
+                    <button type="button submit"
+                      class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Log in</button>
+                  </div>
+
+                  <p class="text-center text-muted mt-5 mb-0">Don't have an account? <a href="/auth/signup"
+                      class="fw-bold text-body"><u>Register here</u></a></p>
+
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 

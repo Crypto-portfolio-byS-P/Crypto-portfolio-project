@@ -1,6 +1,12 @@
 <html lang="en" data-bs-theme="dark">
 
-{{log req.session.currentUser}}
+
+{{!-- {{#if session.currentUser}}
+<h1>you are logged in</h1>
+{{else}}
+<h1>you are not logged in</h1>
+{{/if}} --}}
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -25,12 +31,17 @@
               <li class="nav-item">
                 <a class="nav-link" aria-current="page" href="/crypto/news">News</a>
               </li>
-              
-         
-
+                       
               <li class="nav-item">
+                
                 <a class="nav-link" href="/crypto/charts">Charts</a>
+               
               </li>
+             
+
+
+
+             {{#if session.currentUser}}
               <li class="nav-item">
                 <a class="nav-link" href="/auth/profile">Profile</a>
                 </li>
@@ -41,9 +52,13 @@
                 <li class="nav-item">
                 <a class="nav-link" href="/auth/logout" >Log out</a>
                 </li>
-              <li class="nav-item"></li>
+              {{else}}
+               <li class="nav-item"></li>
                 <a class="nav-link" href="/auth/login" >Log in</a>
                 </li>
+              {{/if}}
+              
+             
   
               
             </ul>

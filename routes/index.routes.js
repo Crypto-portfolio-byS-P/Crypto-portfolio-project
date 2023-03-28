@@ -6,10 +6,12 @@ const axios = require('axios');
 async function getData() {
   const data = await Promise.all([
     axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=20&page=1&sparkline=false"),
-    axios.get("https://api.coingecko.com/api/v3/search/trending")
+    axios.get("https://api.coingecko.com/api/v3/search/trending"),
+    // axios.get("https://api.coincap.io/v2/assets"),
+    // axios.get("https://api.coincap.io/v2/assets/bitcoin")
   ])
 
-  
+  console.log("*************",data)
   return data.map(response => response.data)
 }
 
@@ -31,6 +33,8 @@ router.get("/", async (req, res, next) => {
 
       const responseCall = await getData()
 
+      console.log(responseCall)
+
       p1 = responseCall[0]
       p2 = responseCall[1]
 
@@ -42,6 +46,8 @@ router.get("/", async (req, res, next) => {
       // I have a last request time, we are still on time
       p1 = req.session.p1
       p2 = req.session.p2
+
+      console.log("i am here1", p1)
     }
   } else {
     // I don't have a last request time
@@ -53,7 +59,12 @@ router.get("/", async (req, res, next) => {
     req.session.lastRequestTime = Date.now()
     req.session.p1 = p1
     req.session.p2 = p2
+
+    console.log("i am here2")
+    
   }
+
+
 
   res.render("index", { values: [p1, p2] });
 

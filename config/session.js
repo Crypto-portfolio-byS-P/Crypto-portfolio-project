@@ -17,7 +17,7 @@ module.exports = (app) => {
                 maxAge: 1000 * 60 * 60 * 24,
             },
             // store: MongoStore.create({
-            //     mongoUrl: process.env.MONGODB_URI || 'mongodb://127.0.0.1/',
+            //     mongoUrl: process.env.MONGODB_URI || 'mongodb://127.0.0.1/crypto-link',
             // }),
         }),
     );

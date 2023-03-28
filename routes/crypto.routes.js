@@ -38,7 +38,7 @@ router.post('/portfolio/add', async (req, res, next) => {
 
   const coinInfoFromDb = await Coin.create(coin)
 
-  console.log('---->', coinInfoFromDb.data)
+  // console.log('---->', coinInfoFromDb.data)
   res.redirect("/crypto/portfolio")
   res.render("portfolio/portfolio", { coinInfoFromDb })
 
@@ -97,9 +97,9 @@ router.get('/portfolio', (req, res, next) => {
       }
  
       differencePercent = (((totalPortfolioValue) - (totalSpent)) / totalSpent * 100).toFixed(0)
-      console.log("total value is **********",totalPortfolioValue)
-      console.log("total spent", totalSpent.toFixed(2))
-      console.log("difference is", differencePercent)
+      // console.log("total value is **********",totalPortfolioValue)
+      // console.log("total spent", totalSpent.toFixed(2))
+      // console.log("difference is", differencePercent)
 
 
 

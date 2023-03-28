@@ -80,8 +80,9 @@ router.get('/portfolio', (req, res, next) => {
         for (let j = 0; j < coinsInfoFromDb.length; j++) {
           const portfolioListObject = coinsInfoFromDb[j]
           if (firstListObject.name == portfolioListObject.name) {
-            totalPortfolioValue += ((firstListObject.current_price).toFixed(2) * (portfolioListObject.owned).toFixed(2))
-            totalSpent +=portfolioListObject.purchasedAt * portfolioListObject.owned
+            totalPortfolioValue += ((firstListObject.current_price) * (portfolioListObject.owned))
+            totalPortfolioValue = Math.round(totalPortfolioValue * 100) / 100
+            totalSpent +=Math.round((portfolioListObject.purchasedAt * portfolioListObject.owned) * 100) / 100
 
             
             let newObj = { ...portfolioListObject.toObject(), price: firstListObject.current_price, currentValue: firstListObject.current_price * portfolioListObject.owned }

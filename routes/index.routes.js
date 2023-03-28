@@ -9,7 +9,7 @@ async function getData() {
     axios.get("https://api.coingecko.com/api/v3/search/trending")
   ])
 
-  console.log(data[0])
+  
   return data.map(response => response.data)
 }
 
@@ -19,9 +19,9 @@ router.get("/", async (req, res, next) => {
   let p1 = []
   let p2 = []
 
-  console.log('req.session.lastRequestTime', req.session.lastRequestTime)
-  console.log('Date.now()', Date.now())
-  console.log('Date.now() - req.session.lastRequestTime', Date.now() - req.session.lastRequestTime )
+  // console.log('req.session.lastRequestTime', req.session.lastRequestTime)
+  // console.log('Date.now()', Date.now())
+  // console.log('Date.now() - req.session.lastRequestTime', Date.now() - req.session.lastRequestTime )
 
 
   // Do I have a last request time?

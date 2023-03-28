@@ -36,7 +36,6 @@
       }
     </script>
 </div> --}}
-{{log req.session.currentUser}}
 
 <div class="container">
   {{#each values.[0]}}
@@ -89,22 +88,24 @@
 
 
 
-
+<div class="container">
 <H2>Top 7 trending coins in last 24h</H2>
 
 
-<div class="container">
+<div class="container m-5">
+
+
+  {{#each values.[1].coins}}
   <div class="row">
-
-    {{#each values.[1].data.coins}}
     <div class="col-3">
-      <h1>{{this.item.name}}</h1>
+      <h2>{{this.item.name}} {{this.item.symbol}}</h2>
     </div>
-
+<div class="col-6">
     <p>Price BTC: {{this.item.price_btc}}</p>
-  </div>
-  <div class="col-3">
-    <p>Market Cap Rank: {{this.item.market_cap_rank}}</p>
+    </div>
+    <div class="col-3">
+      <p>Market Cap Rank: {{this.item.market_cap_rank}}</p>
+    </div>
   </div>
   {{/each}}
 
@@ -112,17 +113,3 @@
 </div>
 </div>
 
-
-<div class="container">
-  <div class="row">
-    <div class="col-3">
-      <h1>Hello</h1>
-    </div>
-    <div class="col-3">
-      <h1>Hello</h1>
-    </div>
-    <div class="col-3">
-      <h1>Hello</h1>
-    </div>
-  </div>
-</div>

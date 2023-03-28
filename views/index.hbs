@@ -116,9 +116,9 @@ Crypto tree Map
         </form></p>
         </th>
         <th scope="col"><form method="POST" action="/crypto/portfolio/add">
-          <input type="hidden" name="coinName" value="{{this.name}}" />
-          <input type="hidden" name="coinId" value="{{this.id}}" />
-          <input type="hidden" name="image" value="{{this.image}}" />
+          <input type="hidden" name="watchCoinName" value="{{this.name}}" />
+          <input type="hidden" name="watchCoinId" value="{{this.id}}" />
+          <input type="hidden" name="watchImage" value="{{this.image}}" />
           <input type="hidden" name="CreatedBy" value="{{req.session.currentUser.email}}" />
           <button type="submit"> Add to Watch List </button>
         </form></p>

@@ -12,6 +12,11 @@ router.get("/charts", (req, res) => {
   res.render("charts")
 });
 
+router.get("/learn", (req, res) => {
+  // res.render("views/index");
+  res.render("learn");
+});
+
 // Add to portfolio: Display form
 
 router.post('/portfolio/add', async (req, res, next) => {

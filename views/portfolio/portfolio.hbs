@@ -20,26 +20,26 @@
             {{#each coin}}
             <tbody>
                 <tr>
-                    <th scope="col"><img src={{this.image}} class="img-responsive "
+                    <th class="col"><img src={{this.image}} class="img-responsive "
                             style="width: 50px; height: auto;" /></th>
-                    <th scope="col">
+                    <th class="col">
                         <h4>{{this.name}}</h4>
                     </th>
-                    <th scope="col">
+                    <th class="col">
                         <p>{{this.owned}}</p>
                     </th>
-                    <th scope="col">
+                    <th class="col">
                         <p>{{this.purchasedAt}}</p>
                     </th>
-                    <th scope="col">{{currentValue}}</p>
+                    <th class="col">{{currentValue}}</p>
                     </th>
 
-                    <th scope="col">
+                    <th class="col">
                         <form action="/crypto/{{this._id}}/edit" method="GET" />
                         <button class="btn btn-dark btn-outline-secondary">Edit</button>
                         </form>
                     </th>
-                    <th scope="col">
+                    <th class="col">
                         <form action="/crypto/{{_id}}/delete" method="POST">
                             <button class="btn btn-dark btn-outline-secondary">Delete</button>
                         </form>

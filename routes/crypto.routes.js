@@ -106,21 +106,20 @@ router.get("/news", (req, res) => {
 
 // Add coin to the watchlist
 
-router.post('/portfolio/addToWatchlist', async (req, res, next) => {
-
+router.post("/portfolio/addToWatchlist", isLoggedIn, async (req, res, next) => {
   const watchCoin = {
     watchCoinName: req.body.watchCoinName,
     watchCoinId: req.body.watchCoinId,
-    watchAddedBy: req.session.currentUser ? req.session.currentUser.email : '',
+    watchAddedBy: req.session.currentUser ? req.session.currentUser.email : "",
     watchPriceWhenAdded: req.body.watchCurrPrice,
-    watchImage: req.body.watchImage
-  }
+    watchImage: req.body.watchImage,
+  };
 
-  console.log("this is your watch coin********", watchCoin)
+  console.log("this is your watch coin********", watchCoin);
 
-  const watchCoinInfoFromDb = await Watchlist.create(watchCoin)
-  res.redirect("/crypto/watchlist")
-})
+  const watchCoinInfoFromDb = await Watchlist.create(watchCoin);
+  res.redirect("/crypto/watchlist");
+});
 
 router.get('/watchlist', (req, res, next) => {
 

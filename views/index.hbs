@@ -105,25 +105,10 @@
               </th>
               <th scope="col">{{this.market_cap}}</p>
               </th>
-              <th scope="col">
-                <form method="POST" action="/crypto/portfolio/add">
-    
-                  <label> Amount owned:
-                    <input style="width: 100px" type="number" step="any" name="amount" />
-                  </label>
-                  
-                    <div class="col-xs-1">
-                      <label> Price Purchased At:
-                    <input style="width: 100px" type="number" step="any" name="purchasedAt" />
-                    </div>
-                  </label>
-                  <input type="hidden" name="coinName" value="{{this.name}}" />
-                  <input type="hidden" name="coinId" value="{{this.id}}" />
-                  <input type="hidden" name="image" value="{{this.image}}" />
-                  <input type="hidden" name="CreatedBy" value="{{req.session.currentUser.email}}" />
-                  </th>
                   <th class="col-xs-1" scope="col">
-                  <button class="btn btn-success btn-block btn-xs gradient-custom-4 text-body" type="submit"> Add to portfolio </button>
+                    <button type="button" class="btn btn-success btn-block btn-xs gradient-custom-4 text-body" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                      Add to portfolio
+                    </button>
                 </form>
   
               
@@ -140,8 +125,6 @@
               </th>
             </tr>
           </tbody>
-    
-          {{!--Form for adding coin to the portfolio --}}
     
       </div>
      {{/each}}
@@ -204,3 +187,42 @@
     {{/each}}
   </tbody>
 </table>
+
+
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add to Portfolio</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <form method="POST" action="/crypto/portfolio/add">
+        
+            <label> Amount owned:
+              <input style="width: 100px" type="number" step="any" name="amount" />
+            </label>
+        
+            <div class="col-xs-1">
+              <label> Price Purchased At:
+                <input style="width: 100px" type="number" step="any" name="purchasedAt" />
+            </div>
+            </label>
+            <input type="hidden" name="coinName" value="{{this.name}}" />
+            <input type="hidden" name="coinId" value="{{this.id}}" />
+            <input type="hidden" name="image" value="{{this.image}}" />
+            <input type="hidden" name="CreatedBy" value="{{req.session.currentUser.email}}" />
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-success btn-block btn-xs gradient-custom-4 text-body">
+          Add to portfolio
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

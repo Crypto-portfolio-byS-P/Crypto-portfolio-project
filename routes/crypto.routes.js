@@ -1,28 +1,20 @@
 const express = require('express');
 const router = express.Router();
 const Coin = require('../models/Coin.model');
+const Watchlist = require('../models/Watchlist.model');
 const mongoose = require("mongoose");
 const isLoggedIn = require("../middleware/isLoggedIn.js")
 const axios = require("axios");
 
-// let currentUserEmail
 
 router.get("/charts", (req, res) => {
   // res.render("views/index");
   res.render("charts")
 });
 
-// router.get("/portfolio", (req, res) => {
-//   res.render("portfolio/portfolio");
-// });
-
-
 // Add to portfolio: Display form
 
 router.post('/portfolio/add', async (req, res, next) => {
-
-  // console.log(req.session.currentUser)
-
 
   const coin = {
     name: req.body.coinName,
@@ -35,10 +27,8 @@ router.post('/portfolio/add', async (req, res, next) => {
 
   const coinInfoFromDb = await Coin.create(coin)
 
-  // console.log('---->', coinInfoFromDb.data)
   res.redirect("/crypto/portfolio")
   res.render("portfolio/portfolio", { coinInfoFromDb })
-
 })
 
 //GET Edit coin
@@ -51,8 +41,6 @@ router.get(`/:coinId/edit`, isLoggedIn, (req, res, next) => {
       res.render("portfolio/coin-update", { coin: coinToEdit });
     })
     .catch((error) => next(error));
-
-
 });
 
 router.post(`/:coinId/edit`, (req, res, next) => {
@@ -67,7 +55,6 @@ router.post(`/:coinId/edit`, (req, res, next) => {
 
 
 router.get('/portfolio', (req, res, next) => {
-
   Coin.find({ addedBy: req.session.currentUser.email })
     .then(coinsInfoFromDb => {
 
@@ -82,29 +69,19 @@ router.get('/portfolio', (req, res, next) => {
           if (firstListObject.name == portfolioListObject.name) {
             totalPortfolioValue += ((firstListObject.current_price) * (portfolioListObject.owned))
             totalPortfolioValue = Math.round(totalPortfolioValue * 100) / 100
-            totalSpent +=Math.round((portfolioListObject.purchasedAt * portfolioListObject.owned) * 100) / 100
+            totalSpent += Math.round((portfolioListObject.purchasedAt * portfolioListObject.owned) * 100) / 100
 
-            
             let newObj = { ...portfolioListObject.toObject(), price: firstListObject.current_price, currentValue: firstListObject.current_price * portfolioListObject.owned }
-            
+
             resultsArr.push(newObj)
           }
-          
         }
-        
       }
- 
+
       differencePercent = (((totalPortfolioValue) - (totalSpent)) / totalSpent * 100).toFixed(0)
-      // console.log("total value is **********",totalPortfolioValue)
-      // console.log("total spent", totalSpent.toFixed(2))
-      // console.log("difference is", differencePercent)
 
-
-
-      res.render("portfolio/portfolio", { coin: resultsArr, totalPortfolioValue, differencePercent})
-
+      res.render("portfolio/portfolio", { coin: resultsArr, totalPortfolioValue, differencePercent })
     })
-
 });
 
 //POST Delete coin
@@ -127,7 +104,47 @@ router.get("/news", (req, res) => {
     });
 });
 
-module.exports = router;
+router.post('/portfolio/addToWatchlist', async (req, res, next) => {
+
+  const watchCoin = {
+    watchCoinName: req.body.watchCoinName,
+    watchCoinId: req.body.watchCoinId,
+    watchAddedBy: req.session.currentUser ? req.session.currentUser.email : '',
+    watchPriceWhenAdded: req.body.watchCurrPrice,
+    watchImage: req.body.watchImage
+  }
+
+  console.log("this is your watch coin********", watchCoin)
+
+  const watchCoinInfoFromDb = await Watchlist.create(watchCoin)
+  res.redirect("/crypto/watchlist")
+})
+
+router.get('/watchlist', (req, res, next) => {
+
+  Watchlist.find({ watchAddedBy: req.session.currentUser.email })
+    .then(watchlistCoinsFromDb => {
+
+      let resultsArr = []
+
+      for (let i = 0; i < req.session.p1.length; i++) {
+        const firstListObject = req.session.p1[i]
+        for (let j = 0; j < watchlistCoinsFromDb.length; j++) {
+          const portfolioListObject = watchlistCoinsFromDb[j]
+          if (firstListObject.name == portfolioListObject.watchCoinName) {
+
+            let newObj1 = { ...portfolioListObject.toObject(), currPrice: firstListObject.current_price }
+
+            resultsArr.push(newObj1)
+          }
+        }
+      }
+      res.render("watchlist/watchlist", { coins: resultsArr })
+    })
+})
+
+
+
 
 
 module.exports = router;

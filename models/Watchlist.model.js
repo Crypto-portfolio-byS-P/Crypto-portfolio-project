@@ -1,19 +1,27 @@
-const mongoose = require('mongoose');
+const { Schema, model } = require('mongoose');
 
-const WatchlistSchema = new mongoose.Schema({
-    coinName : {
+const watchlistSchema = new Schema({
+    watchCoinName : {
         type: String,
         required: true,
     },
 
-    coinId : {
+    watchCoinId : {
         type:String,
         required: true,
     },
-    createdAt : {
-        type: Date,
-        default: Date.now
-    }
+    watchAddedBy: {
+        type: String,
+      },
+      watchPriceWhenAdded: {
+        type: Number,
+      },
+      watchImage: {
+        type: String,
+      },
 });
 
-module.exports = mongoose.model("Watchlist", WatchlistSchema);
+
+const Watchlist = model("Watchlist", watchlistSchema);
+
+module.exports = Watchlist;

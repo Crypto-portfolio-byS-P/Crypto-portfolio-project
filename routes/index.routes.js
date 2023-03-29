@@ -5,7 +5,7 @@ const axios = require('axios');
 
 async function getData() {
   const data = await Promise.all([
-    axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=20&page=1&sparkline=false"),
+    // axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=20&page=1&sparkline=false"),
     axios.get("https://api.coincap.io/v2/assets"),
     axios.get("https://api.coingecko.com/api/v3/search/trending"),
   ])

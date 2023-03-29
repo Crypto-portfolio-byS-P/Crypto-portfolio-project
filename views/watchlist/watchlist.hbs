@@ -1,0 +1,10 @@
+<h1>this is your watchlist</h1>
+
+{{log coins}}
+
+ {{#each coins}}
+ <img src={{this.watchImage}} alt="">
+<h1>{{this.watchCoinName}}</h1>
+<p>Price when added: EUR {{this.watchPriceWhenAdded}}</p>
+<p>Current price: EUR {{this.currPrice}}</p>
+ {{/each}}

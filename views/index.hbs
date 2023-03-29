@@ -115,11 +115,12 @@ Crypto tree Map
           <button type="submit"> Add to portfolio </button>
         </form></p>
         </th>
-        <th scope="col"><form method="POST" action="/crypto/portfolio/add">
-          <input type="hidden" name="coinName" value="{{this.name}}" />
-          <input type="hidden" name="coinId" value="{{this.id}}" />
-          <input type="hidden" name="image" value="{{this.image}}" />
-          <input type="hidden" name="CreatedBy" value="{{req.session.currentUser.email}}" />
+        <th scope="col"><form method="POST" action="/crypto/portfolio/addToWatchlist">
+          <input type="hidden" name="watchCoinName" value="{{this.name}}" />
+          <input type="hidden" name="watchCoinId" value="{{this.id}}" />
+          <input type="hidden" name="watchImage" value="{{this.image}}" />
+          <input type="hidden" name="watchCurrPrice" value="{{this.current_price}}" />
+          <input type="hidden" name="CreatedBy" value="{{session.currentUser.email}}" />
           <button type="submit"> Add to Watch List </button>
         </form></p>
         </th>
@@ -160,4 +161,6 @@ Crypto tree Map
 
 </div>
 </div>
+
+{{!-- {{log session.currentUser.email}} --}}
 

@@ -8,11 +8,12 @@
 {{#each articles}}
     <div class="col-md-3 mb-4">
         <div class="card h-100" style="width: 18rem;">
-            <img src="{{urlToImage}}" class="card-img-top m-h-50 same-size-img" alt="{{title}}">
+            <img src="{{urlToImage}}" class="card-img-top m-h-50 same-size-img text-truncate" alt="{{title}}">
             <div class="card-body ">
                 <h5 class="card-title">{{title}}</h5>
                 {{!-- <p class="card-text text-truncate">{{description}}</p> --}}
-                <a href="{{description}}" class="card-link">Read more</a>
+                <button type="button submit " class="btn btn-success btn-block btn-sm text-body">
+                    <a href="{{url}}" class="card-link"> Read more</a></button>
 
             </div>
         </div>

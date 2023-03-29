@@ -2,27 +2,21 @@
     data-text_color="#D6D6D6" data-link_color="#2981D1" data-header_bg_color="#30343B" data-header_text_color="#FFFFFF"
     data-posts_limit="10" class="CryptoPanicWidget">Latest News</a>
 <script src="https://static.cryptopanic.com/static/js/widgets.min.js"></script> --}}
+<h1>Latest News</h1>
+<div class="container">
+<div class="row">
+{{#each articles}}
+    <div class="col-md-3 mb-4">
+        <div class="card h-100" style="width: 18rem;">
+            <img src="{{urlToImage}}" class="card-img-top m-h-50 same-size-img" alt="{{title}}">
+            <div class="card-body ">
+                <h5 class="card-title">{{title}}</h5>
+                {{!-- <p class="card-text text-truncate">{{description}}</p> --}}
+                <a href="{{description}}" class="card-link">Read more</a>
 
-    <h1>Latest News</h1>
-    <div class="container">
-    <table class="table table-dark table-striped table-bordered" >
-        {{#each articles}}
-        <tbody class="table-group-divider">
-            <div class="row">
-                <tr>
-                    <th>{{#if urlToImage}}<img src="{{urlToImage}}" alt="{{title}} image"
-                            style="width: 100px; height: auto;"> </th>{{/if}}
-                        <th><h4>{{title}}</h4>
-                    </th>
             </div>
-            <th>
-                <p class="fw-lighter">{{description}}</p>
-            </th>
-            <th>
-                <p><a href="{{url}}">Read more</a></p>
-            <th>
-                </tr>
-                {{/each}}
-    
-    </table>
+        </div>
     </div>
+{{/each}}
+</div>
+</div>

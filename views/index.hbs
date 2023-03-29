@@ -1,8 +1,6 @@
 <h1>Crypto Link</h1>
 <p>Where you can find all your crypto-info</p>
 
-Crypto tree Map
-
 <div>
   <script src="https://widgets.coingecko.com/coingecko-coin-heatmap-widget.js"></script>
   <coingecko-coin-heatmap-widget height="400" locale="en"></coingecko-coin-heatmap-widget>
@@ -123,11 +121,13 @@ Crypto tree Map
                   <input type="hidden" name="coinId" value="{{this.id}}" />
                   <input type="hidden" name="image" value="{{this.image}}" />
                   <input type="hidden" name="CreatedBy" value="{{req.session.currentUser.email}}" />
+                  </th>
+                  <th class="col-xs-1" scope="col">
                   <button class="btn btn-success btn-block btn-xs gradient-custom-4 text-body" type="submit"> Add to portfolio </button>
                 </form>
   
-              </th>
-              <th class="col-xs-1" scope="col">
+              
+              
                 <form method="POST" action="/crypto/portfolio/addToWatchlist">
                   <input type="hidden" name="watchCoinName" value="{{this.name}}" />
                   <input type="hidden" name="watchCoinId" value="{{this.id}}" />
@@ -147,7 +147,7 @@ Crypto tree Map
      {{/each}}
     </div>
    
-  
+  </table>
 
 
 
@@ -157,9 +157,7 @@ Crypto tree Map
 <div class="container clearfix" >
 <H2>Top 7 trending coins in last 24h</H2>
 
-
-<div class="container m-5">
-
+{{!-- <div class="container m-5">
 
   {{#each values.[1].coins}}
   <div class="row">
@@ -176,7 +174,33 @@ Crypto tree Map
   {{/each}}
 
 
-</div>
+</div> --}}
 
-{{!-- {{log session.currentUser.email}} --}}
 
+
+
+{{log values.[1].coins}}
+
+<table class="table table-striped table-dark table-sm">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Symbol</th>
+      <th scope="col">Coin Name</th>
+      <th scope="col">Market Cap Rank</th>
+      <th scope="col">Price BTC</th>
+    </tr>
+  </thead>
+  <tbody class="table-group-divider align-middle" >
+    {{#each values.[1].coins}}
+    <tr >
+      <th ><img src="{{this.item.small}}" alt="" srcset=""></th>
+    <td>{{this.item.symbol}}</td>
+      <td>{{this.item.name}}</td>
+       <td>{{this.item.market_cap_rank}}</td>
+      <td>{{this.item.price_btc}}</td>
+     
+    </tr>
+    {{/each}}
+  </tbody>
+</table>

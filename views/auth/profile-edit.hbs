@@ -1,0 +1,12 @@
+<h2>Edit profile</h2>
+
+<form action="/auth/{{user._id}}/edit" method="post">
+    <label> Username:
+        <input type="text" name="username" value="{{user.username}}" />
+    </label>
+
+    <label> email:
+            <input type="text" name="email" value="{{user.email}}" />
+    </label>
+    <button type="submit">Save changes</button>
+</form>

@@ -159,6 +159,31 @@ router.get("/profile", isLoggedIn, (req, res) => {
 });
 
   
+router.get(`/:userId/edit`, isLoggedIn, (req, res, next) => {
+  const { userId } = req.params;
+
+  User.findByIdAndUpdate(userId)
+    .then((userToEdit) => {
+      userDetails = userToEdit;
+      res.render("auth/profile-edit", { user: userToEdit });
+    })
+    .catch((error) => next(error));
+});
+
+router.post(`/:userId/edit`, (req, res, next) => {
+  console.log( req.params)
+  const { userId } = req.params;
+  const { username, email } = req.body;
+
+  User.findByIdAndUpdate(userId, { username, email }, { new: true })
+    .then(() => res.redirect(`/auth/profile`))
+    .catch((error) => {
+      res.redirect("/profile");
+    });
+});
+
+
+
 module.exports = router;
 
 

@@ -6,14 +6,14 @@
 <div class="container">
 <div class="row">
 {{#each articles}}
-    <div class="col-md-3 mb-4">
-        <div class="card h-100" style="width: 18rem;">
+    <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
+        <div class="shadow card h-100" style="width: 18rem;">
             <img src="{{urlToImage}}" class="card-img-top m-h-50 same-size-img text-truncate" alt="{{title}}">
             <div class="card-body ">
                 <h5 class="card-title">{{title}}</h5>
                 {{!-- <p class="card-text text-truncate">{{description}}</p> --}}
 
-                <button type="button submit " class="btn btn-success btn-block btn-sm text-body position-absolute bottom-0 start-0">
+                <button type="button submit " class="btn btn-success btn-block btn-sm text-body position-absolute bottom-0 start-0 gradient-custom-4">
                     <a href="{{url}}" class="card-link"> Read more</a></button>
             </div>
         </div>

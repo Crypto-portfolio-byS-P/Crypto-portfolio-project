@@ -42,18 +42,22 @@
 
 
              {{#if session.currentUser}}
-              <li class="nav-item">
-                <a class="nav-link" href="/auth/profile">Profile</a>
-                </li>
-                <li>
-                <a class="nav-link" href="/crypto/portfolio">Portfolio</a>
-              </li>
-                <li class="nav-item">
-                <a class="nav-link" href="/auth/logout" >Log out</a>
-                </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="/auth/profile" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Profile
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item nav-link" href="/auth/portfolio">Portfolio</a></li>
+                <li><a class="dropdown-item nav-link" href="/auth/watchlist">Watchlist</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"></li>
+            <a class="nav-link" href="/auth/logout/">Log out</a>
+            </li>
               {{else}}
                <li class="nav-item"></li>
-                <a class="nav-link" href="/auth/login" >Log in</a>
+                <a class="nav-link" href="/auth/login/" >Log in</a>
                 </li>
                 <li class="nav-item"></li>
                 <a class="nav-link" href="/auth/signup">Register</a>

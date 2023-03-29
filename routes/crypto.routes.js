@@ -104,6 +104,8 @@ router.get("/news", (req, res) => {
     });
 });
 
+// Add coin to the watchlist
+
 router.post('/portfolio/addToWatchlist', async (req, res, next) => {
 
   const watchCoin = {
@@ -142,6 +144,15 @@ router.get('/watchlist', (req, res, next) => {
       res.render("watchlist/watchlist", { coins: resultsArr })
     })
 })
+
+//POST Delete coin from watchlist
+router.post(`/:watchCoinId/delete`, isLoggedIn, (req, res, next) => {
+  const { watchCoinId } = req.params
+
+  Watchlist.findByIdAndDelete(watchCoinId)
+    .then(() => res.redirect(`/watchlist`))
+    .catch((error) => next(error));
+});
 
 
 

@@ -18,6 +18,10 @@ h1, nav {
   justify-content: center;
 }
 
+h1{
+  color: purple
+}
+
 .card img {
   height: 200px;
   object-fit: cover;

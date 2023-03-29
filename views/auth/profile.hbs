@@ -1,7 +1,41 @@
+<div class="text-center">
 <h1>Welcome {{user.username}}</h1>
-<p>This is your profile</p>
-<button>
-    <a href="../crypto/portfolio">Portfolio</a>
-</button>
+</div>
+
+
+{{log user}}
+
 <br>
 
+
+    
+{{!-- 
+<div class="container text-center justify-content-center  ">
+
+    <div class="card" style="width: 300px">
+        <img class="card-img-top" src="/images/user.jpeg" />
+        <div class="card-body">
+            <p class="card-title">Your email address is: {{user.email}} </p>
+        </div>
+        <button>
+    <a href="../crypto/portfolio">Portfolio</a>
+</button>
+    </div>
+
+</div> --}}
+<div class="container d-flex justify-content-center">
+<div class="card" style="width: 18rem;">
+  <img src="/images/user.jpeg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Username: {{user.username}}</h5>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Email: {{user.email}} </li>
+    <li class="list-group-item">Created on: {{user.createdAt}}</li>
+    <li class="list-group-item">A third item</li>
+  </ul>
+  <div class="card-body text-center">
+    <a class="btn btn-success btn-block btn-lg gradient-custom-4 text-body  " href="../crypto/portfolio">Portfolio</a>
+  </div>
+</div>
+</div>

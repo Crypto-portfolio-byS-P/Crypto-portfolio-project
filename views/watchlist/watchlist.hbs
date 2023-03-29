@@ -7,4 +7,7 @@
 <h1>{{this.watchCoinName}}</h1>
 <p>Price when added: EUR {{this.watchPriceWhenAdded}}</p>
 <p>Current price: EUR {{this.currPrice}}</p>
+<form action="/{{_id}}/delete" method="POST">
+<button class="btn btn-dark btn-outline-secondary">Delete</button>
+</form>
  {{/each}}

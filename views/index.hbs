@@ -1,7 +1,7 @@
 <h1>Crypto Link</h1>
 <p>Where you can find all your crypto-info</p>
 
-<div class="m-2">
+<div class="m-2 ">
   <script src="https://widgets.coingecko.com/coingecko-coin-heatmap-widget.js"></script>
   <coingecko-coin-heatmap-widget height="400" locale="en"></coingecko-coin-heatmap-widget>
 </div>
@@ -53,20 +53,30 @@
 
     <div class="container clearfix">
       <div class="table-responsive" id="allCoin">
-        <table class="table text-center" >
-          <thead>
-            <tr>
+        <table class="table text-center align-middle" >
+          <div class="position-sticky">
+          <thead class="sticky-top bg-secondary">
+            
+            <tr >
+              <th scope="col">Rank</th>
               <th scope="col"></th>
               <th scope="col">Name</th>
               <th scope="col">Current Price (EUR)</th>
               <th scope="col">Price Change 24h (%)</th>
               <th scope="col">Market Cap (EUR)</th>
+              <th scope="col"></th>
+              <th scope="col"></th>
             </tr>
+           
           </thead>
+           </div>
           {{#each values.[2]}}
           <tbody >
             <tr class="p-0">
-              <th scope="col"><img src={{this.image}} class="img-responsive " style="width: 20%; height: auto;" /></th>
+               <th class="col-1" scope="col">
+                <p>{{this.market_cap_rank}}</p>
+              </th>
+              <th class="col-1" scope="col"><img src={{this.image}} class="img-responsive " style="width: 40px; height: auto;" /></th>
               <th scope="col">
                 <p>{{this.name}}</p>
               </th>

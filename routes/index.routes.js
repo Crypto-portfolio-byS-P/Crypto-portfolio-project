@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const axios = require('axios');
+const p3 = require('../config/backup')
 // const { response } = require('../app');
 
 async function getData() {
@@ -18,7 +19,7 @@ router.get("/", async (req, res, next) => {
 
   let p1 = []
   let p2 = []
-
+ 
   // Do I have a last request time?
   if (req.session.lastRequestTime) {
     // I have a last request time, does the time expired?
@@ -51,13 +52,13 @@ router.get("/", async (req, res, next) => {
     req.session.p1 = p1
     req.session.p2 = p2
 
-    // console.log("i am here2")
+    console.log(req.session)
     
   }
 
 
 
-  res.render("index", { values: [p1, p2] });
+  res.render("index", { values: [p1, p2, p3] });
 
 
 });
@@ -66,3 +67,4 @@ router.get("/", async (req, res, next) => {
 
 
 module.exports = router;
+

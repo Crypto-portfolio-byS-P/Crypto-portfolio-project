@@ -9,54 +9,54 @@
 <h1>you are not logged in</h1>
 {{/if}} --}}
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>{{appTitle}}</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="stylesheet" href="/stylesheets/style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300&display=swap" rel="stylesheet">
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>{{appTitle}}</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300&display=swap" rel="stylesheet">
+</head>
 
-  <body style="padding: 10; margin: 0 10 0 10">
-      <header>
-      <nav class="navbar navbar-expand-lg ">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="/">Crypto Link</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="/crypto/news">News</a>
-              </li>
-                       
-              <li class="nav-item">
-                <a class="nav-link" href="/crypto/charts">Charts</a>
-              </li>
-              <li class="nav-item">
+<body style="padding: 10; margin: 0 10 0 10">
+  <header>
+    <nav class="navbar navbar-expand-lg ">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Crypto Link</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/crypto/news">News</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/crypto/charts">Charts</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="/events">Events</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="/crypto/learn">Learn</a>
-              </li>
-             
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/crypto/learn">Learn</a>
+            </li>
 
 
 
-             {{#if session.currentUser}}
+
+            {{#if session.currentUser}}
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="/auth/profile" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="/auth/profile" id="navbarDropdown" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
                 {{session.currentUser.username}}
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -68,42 +68,43 @@
             <li class="nav-item"></li>
             <a class="nav-link" href="/auth/logout/">Log out</a>
             </li>
-              {{else}}
-               <li class="nav-item"></li>
-                <a class="nav-link" href="/auth/login/" >Log in</a>
-                </li>
-                <li class="nav-item"></li>
-                <a class="nav-link" href="/auth/signup">Register</a>
-                </li>
-              {{/if}}
-              
-             
-  
-              
-            </ul>
-          </div>
+            {{else}}
+            <li class="nav-item"></li>
+            <a class="nav-link" href="/auth/login/">Log in</a>
+            </li>
+            <li class="nav-item"></li>
+            <a class="nav-link" href="/auth/signup">Register</a>
+            </li>
+            {{/if}}
+
+
+
+
+          </ul>
         </div>
-      </nav>
+      </div>
+    </nav>
 
-      {{!-- Bellow nav bar widget  --}}
-      {{!-- <div id="cr-widget-marquee" data-coins="bitcoin,ethereum,tether,ripple,cardano" data-theme="dark"
-        data-show-symbol="true" data-show-icon="true" data-show-period-change="true" data-period-change="24H"
-        data-api-url="https://api.cryptorank.io/v0">
-        <a href="https://cryptorank.io">Coins by Cryptorank</a>
-        <script src="https://cryptorank.io/widget/marquee.js"></script>
-      </div> --}}
-<script defer src="https://www.livecoinwatch.com/static/lcw-widget.js"></script>
-<div class="livecoinwatch-widget-5" lcw-base="EUR" lcw-color-tx="#999999" lcw-marquee-1="coins" lcw-marquee-2="none"
-  lcw-marquee-items="30"></div>
-    </header>
-    
-    
+    {{!-- Bellow nav bar widget --}}
+    {{!-- <div id="cr-widget-marquee" data-coins="bitcoin,ethereum,tether,ripple,cardano" data-theme="dark"
+      data-show-symbol="true" data-show-icon="true" data-show-period-change="true" data-period-change="24H"
+      data-api-url="https://api.cryptorank.io/v0">
+      <a href="https://cryptorank.io">Coins by Cryptorank</a>
+      <script src="https://cryptorank.io/widget/marquee.js"></script>
+    </div> --}}
+    <script defer src="https://www.livecoinwatch.com/static/lcw-widget.js"></script>
+    <div class="livecoinwatch-widget-5" lcw-base="EUR" lcw-color-tx="#999999" lcw-marquee-1="coins" lcw-marquee-2="none"
+      lcw-marquee-items="30"></div>
+  </header>
 
-    {{{body}}}
 
-    <script src="/js/script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-  </body>
+
+  {{{body}}}
+
+  <script src="/js/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+</body>
 
 </html>

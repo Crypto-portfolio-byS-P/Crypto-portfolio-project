@@ -4,20 +4,27 @@ const Event = require("../models/Event.model");
 const fileUploader = require("../config/cloudinary.config");
 const isLoggedIn = require("../middleware/isLoggedIn");
 
-
 router.get("/events/create", isLoggedIn, (req, res) =>
   res.render("events/events-create")
 );
 
+//create event
 router.post(
   "/events/create",
   fileUploader.single("event-cover-image"),
   (req, res) => {
     const { name, location, date, details, createdBy } = req.body;
 
-    Event.create({ name, location, date, details, imageUrl: req.file.path, createdBy })
+    Event.create({
+      name,
+      location,
+      date,
+      details,
+      imageUrl: req.file.path,
+      createdBy,
+    })
       .then((newlyCreatedEventFromDB) => {
-        res.redirect('/events');
+        res.redirect("/events");
       })
       .catch((error) =>
         console.log(`Error while creating a new event: ${error}`)
@@ -45,7 +52,6 @@ router.get("/events/:id/edit", isLoggedIn, (req, res) => {
       console.log(`Error while getting a single event for edit: ${error}`)
     );
 });
- 
 
 router.post(
   "/events/:id/edit",
@@ -61,14 +67,19 @@ router.post(
       imageUrl = existingImage;
     }
 
-    Event.findByIdAndUpdate(id, { name, location, date, details, imageUrl }, { new: true })
+    Event.findByIdAndUpdate(
+      id,
+      { name, location, date, details, imageUrl },
+      { new: true }
+    )
       .then(() => res.redirect(`/events`))
-      .catch((error) =>
-        res.redirect("events/events-edit"), { errorMessage: "Unable to edit event." }
-      );
+      .catch((error) => res.redirect("events/events-edit"), {
+        errorMessage: "Unable to edit event.",
+      });
   }
 );
 
+//Delete event
 router.post("/events/:eventId/delete", isLoggedIn, (req, res, next) => {
   const { eventId } = req.params;
 
@@ -76,6 +87,5 @@ router.post("/events/:eventId/delete", isLoggedIn, (req, res, next) => {
     .then(() => res.redirect("/events"))
     .catch((error) => next(error));
 });
- 
 
 module.exports = router;

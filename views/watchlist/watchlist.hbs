@@ -2,51 +2,51 @@
 
 {{#if coins}}
 
-    <div class="p-2">
+<div class="p-2">
 
-        <div class="container clearfix">
-            <div class="table-responsive">
-                <table class="table text-center">
-                    <thead>
-                        <tr>
-                            <th scope="col"></th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Price when added (EUR)</th>
-                            <th scope="col">Current price (EUR)</th>
-                        </tr>
-                    </thead>
+    <div class="container clearfix">
+        <div class="table-responsive">
+            <table class="table text-center">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Price when added (EUR)</th>
+                        <th scope="col">Current price (EUR)</th>
+                    </tr>
+                </thead>
 
-                    {{#each coins}}
+                {{#each coins}}
 
-                    <tbody>
-                        <tr>
-                            <th class="col"><img src={{this.watchImage}} class="img-responsive "
-                                    style="width: 50px; height: auto;" /></th>
-                            <th class="col">
-                                <h4>{{this.watchCoinName}}</h4>
-                            </th>
-                            <th class="col">
-                                <p>{{this.watchPriceWhenAdded}}</p>
-                            </th>
-                            <th class="col">
-                                <p>{{this.currPrice}}</p>
-                            </th>
-                            <th class="col">
-                                <form action="/crypto/{{_id}}/watchlist/delete" method="POST">
-                                    <button class="btn btn-dark btn-outline-secondary">Delete</button>
-                                </form>
-                            </th>
-            </div>
+                <tbody>
+                    <tr>
+                        <th class="col"><img src={{this.watchImage}} class="img-responsive "
+                                style="width: 50px; height: auto;" /></th>
+                        <th class="col">
+                            <h4>{{this.watchCoinName}}</h4>
+                        </th>
+                        <th class="col">
+                            <p>{{this.watchPriceWhenAdded}}</p>
+                        </th>
+                        <th class="col">
+                            <p>{{this.currPrice}}</p>
+                        </th>
+                        <th class="col">
+                            <form action="/crypto/{{_id}}/watchlist/delete" method="POST">
+                                <button class="btn btn-dark btn-outline-secondary">Delete</button>
+                            </form>
+                        </th>
         </div>
-
-
-        {{/each}}
-        {{else}}
-        <p>There are no coins in your watchlist yet!</p>
-        <a href="/" class="btn btn-success btn-block btn-sm gradient-custom-4 text-body">Add Coins</a>
-
-        {{/if}}
     </div>
+
+
+    {{/each}}
+    {{else}}
+    <p>There are no coins in your watchlist yet!</p>
+    <a href="/" class="btn btn-success btn-block btn-sm gradient-custom-4 text-body">Add Coins</a>
+
+    {{/if}}
+</div>
 
 </div>
 </tbody>

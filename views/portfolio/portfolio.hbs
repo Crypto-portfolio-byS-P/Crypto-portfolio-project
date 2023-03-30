@@ -1,65 +1,69 @@
-
- {{#if coin}}
+{{#if coin}}
 <div class="d-grid gap-3">
-    <div class="p-2 "><h3>Your Portfolio Total Value: EUR {{totalPortfolioValue}} </h3></div>
-    <div class="p-2"><h4>Your portfolio is performing at {{differencePercent}}%</h4></div>
+    <div class="p-2 ">
+        <h3>Your Portfolio Total Value: EUR {{totalPortfolioValue}} </h3>
+    </div>
+    <div class="p-2">
+        <h4>Your portfolio is performing at {{differencePercent}}%</h4>
+    </div>
     <div class="p-2">
 
 
 
-<div class="container clearfix">
-    <div class="table-responsive">
-        <table class="table text-center">
-            <thead>
-                <tr>
-                    <th scope="col"></th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Current Price (EUR)</th>
-                    <th scope="col">Price Change % 24h (%)</th>
-                    <th scope="col">Market Cap (EUR)</th>
-                </tr>
-            </thead>
-              
-            {{#each coin}}
-         
-            <tbody>
-                <tr>
-                    <th class="col"><img src={{this.image}} class="img-responsive "
-                            style="width: 50px; height: auto;" /></th>
-                    <th class="col">
-                        <h4>{{this.name}}</h4>
-                    </th>
-                    <th class="col">
-                        <p>{{this.owned}}</p>
-                    </th>
-                    <th class="col">
-                        <p>{{this.purchasedAt}}</p>
-                    </th>
-                    <th class="col">{{currentValue}}</p>
-                    </th>
+        <div class="container clearfix">
+            <div class="table-responsive">
+                <table class="table text-center">
+                    <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Current Price (EUR)</th>
+                            <th scope="col">Price Change % 24h (%)</th>
+                            <th scope="col">Market Cap (EUR)</th>
+                        </tr>
+                    </thead>
 
-                    <th class="col">
-                        <form action="/crypto/{{this._id}}/edit" method="GET" />
-                        <button class="btn btn-dark btn-outline-secondary">Edit</button>
-                        </form>
-                    </th>
-                    <th class="col">
-                        <form action="/crypto/{{_id}}/delete" method="POST">
-                            <button class="btn btn-dark btn-outline-secondary">Delete</button>
-                        </form>
-                    </th>
+                    {{#each coin}}
+
+                    <tbody>
+                        <tr>
+                            <th class="col"><img src={{this.image}} class="img-responsive "
+                                    style="width: 50px; height: auto;" /></th>
+                            <th class="col">
+                                <h4>{{this.name}}</h4>
+                            </th>
+                            <th class="col">
+                                <p>{{this.owned}}</p>
+                            </th>
+                            <th class="col">
+                                <p>{{this.purchasedAt}}</p>
+                            </th>
+                            <th class="col">{{currentValue}}</p>
+                            </th>
+
+                            <th class="col">
+                                <form action="/crypto/{{this._id}}/edit" method="GET" />
+                                <button class="btn btn-dark btn-outline-secondary">Edit</button>
+                                </form>
+                            </th>
+                            <th class="col">
+                                <form action="/crypto/{{_id}}/delete" method="POST">
+                                    <button class="btn btn-dark btn-outline-secondary">Delete</button>
+                                </form>
+                            </th>
+            </div>
+        </div>
+
+
+        {{/each}}
+        {{else}}
+        <p>There are no coins in your portfolio yet!</p>
+        <a href="/" class="btn btn-success btn-block btn-sm gradient-custom-4 text-body">Add Coins</a>
+
+        {{/if}}
     </div>
-</div>
-
-  
-{{/each}}
- {{else}}
-    <p>There are no coins in your portfolio yet!</p>
-    <a href="/" class="btn btn-success btn-block btn-sm gradient-custom-4 text-body">Add Coins</a>
-
-  {{/if}} 
-</div>
 
 </div>
-</tbody></div>
+</tbody>
+</div>
 </div>

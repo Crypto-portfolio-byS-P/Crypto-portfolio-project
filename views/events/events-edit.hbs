@@ -10,27 +10,31 @@
                             <form action="/events/{{_id}}/edit" method="post" enctype="multipart/form-data">
 
                                 <div class="form-outline mb-4">
-                                    <input type="text" name="name" class="form-control form-control-lg"
-                                        value="{{name}}" required/>
+                                    <input type="text" name="name" class="form-control form-control-lg" value="{{name}}"
+                                        required />
                                     <label class="form-label">Name</label>
                                 </div>
                                 <div class="form-outline mb-4">
-                                    <input type="text" name="location" class="form-control form-control-lg" value="{{location}}" required />
+                                    <input type="text" name="location" class="form-control form-control-lg"
+                                        value="{{location}}" required />
                                     <label class="form-label">Location</label>
                                 </div>
                                 <div class="form-outline mb-4">
-                                    <input type="datetime-local" id="event-time" name="date" value="{{date}}" min="2018-06-07T00:00" required />
+                                    <input type="datetime-local" id="event-time" name="date" value="{{date}}"
+                                        min="2018-06-07T00:00" required />
                                     <label class="form-label">Date</label>
-                    
+
                                 </div>
                                 <div class="form-outline mb-4">
-                                    <input type="text" name="details" class="form-control form-control-lg" value="{{details}}" />
+                                    <input type="text" name="details" class="form-control form-control-lg"
+                                        value="{{details}}" />
                                     <label class="form-label">Details</label>
                                 </div>
                                 <div class="form-outline mb-4">
                                     <label>Image:
-                                        <input type="file" name="event-cover-image" class="form-control form-control-lg" />
-                                        <input type="text" name="existingImage" hidden value="{{imageUrl}}"/>
+                                        <input type="file" name="event-cover-image"
+                                            class="form-control form-control-lg" />
+                                        <input type="text" name="existingImage" hidden value="{{imageUrl}}" />
                                     </label>
                                 </div>
 

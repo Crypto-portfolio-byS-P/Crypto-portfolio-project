@@ -20,12 +20,12 @@ const eventSchema = new Schema(
       type: String,
     },
     createdBy: {
-    type: String,
-  },
+      type: String,
+    },
     imageUrl: {
       type: String,
+    },
   },
-},
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`
     timestamps: true,

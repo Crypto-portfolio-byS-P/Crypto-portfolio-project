@@ -6,35 +6,6 @@
   <coingecko-coin-heatmap-widget height="400" locale="en"></coingecko-coin-heatmap-widget>
 </div>
 
-{{!-- Price comparison widget
-
-
-
-{{!--
-<script src="https://widgets.coingecko.com/coingecko-coin-compare-chart-widget.js"></script>
-<coingecko-coin-compare-chart-widget coin-ids="bitcoin,ethereum" currency="usd"
-  locale="en"></coingecko-coin-compare-chart-widget> --}}
-
-{{!-- Technical analysis widget --}}
-
-{{!-- <div class="tradingview-widget-container">
-  <div class="tradingview-widget-container__widget"></div>
-  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/BTCUSD/?exchange=BITSTAMP"
-      rel="noopener" target="_blank"><span class="blue-text">Bitcoin analysis</span></a> by TradingView</div>
-  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js"
-    async>
-      {
-        "interval": "1m",
-          "width": 425,
-            "isTransparent": false,
-              "height": 450,
-                "symbol": "BITSTAMP:BTCUSD",
-                  "showIntervalTabs": true,
-                    "locale": "en",
-                      "colorTheme": "light"
-      }
-    </script>
-</div> 
 
 {{!-- Current code below --}}
 
@@ -110,9 +81,7 @@
                       Add to portfolio
                     </button>
                 </form>
-  
-              
-              
+
                 <form method="POST" action="/crypto/portfolio/addToWatchlist">
                   <input type="hidden" name="watchCoinName" value="{{this.name}}" />
                   <input type="hidden" name="watchCoinId" value="{{this.id}}" />
@@ -124,43 +93,18 @@
                
               </th>
             </tr>
-          </tbody>
-    
+          </tbody>    
       </div>
+ 
+
      {{/each}}
     </div>
    
   </table>
-
-
-
-
 </div>
 
 <div class="container clearfix" >
 <H2>Top 7 trending coins in last 24h</H2>
-
-{{!-- <div class="container m-5">
-
-  {{#each values.[1].coins}}
-  <div class="row">
-    <div class="col-3">
-      <h2>{{this.item.name}} {{this.item.symbol}}</h2>
-    </div>
-<div class="col-6">
-    <p>Price BTC: {{this.item.price_btc}}</p>
-    </div>
-    <div class="col-3">
-      <p>Market Cap Rank: {{this.item.market_cap_rank}}</p>
-    </div>
-  </div>
-  {{/each}}
-
-
-</div> --}}
-
-
-
 
 {{log values.[1].coins}}
 
@@ -194,7 +138,8 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -213,9 +158,9 @@
                 <input style="width: 100px" type="number" step="any" name="purchasedAt" />
             </div>
             </label>
-            <input type="hidden" name="coinName" value="{{this.name}}" />
-            <input type="hidden" name="coinId" value="{{this.id}}" />
-            <input type="hidden" name="image" value="{{this.image}}" />
+            <input type="hidden" name="coinName" value="{{this.item.name}}" />
+            <input type="hidden" name="coinId" value="{{this.item.id}}" />
+            <input type="hidden" name="image" value="{{this.item.image}}" />
             <input type="hidden" name="CreatedBy" value="{{req.session.currentUser.email}}" />
       </div>
       <div class="modal-footer">
@@ -226,3 +171,4 @@
     </div>
   </div>
 </div>
+

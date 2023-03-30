@@ -1,13 +1,13 @@
 <h1>this is your watchlist</h1>
 
-{{log coins}}
 
- {{#each coins}}
- <img src={{this.watchImage}} alt="">
+
+{{#each coins}}
+<img src={{this.watchImage}} alt="">
 <h1>{{this.watchCoinName}}</h1>
 <p>Price when added: EUR {{this.watchPriceWhenAdded}}</p>
 <p>Current price: EUR {{this.currPrice}}</p>
-<form action="/{{_id}}/delete" method="POST">
-<button class="btn btn-dark btn-outline-secondary">Delete</button>
+<form action="/crypto/{{_id}}/watchlist/delete" method="POST">
+    <button class="btn btn-dark btn-outline-secondary">Delete</button>
 </form>
- {{/each}}
+{{/each}}

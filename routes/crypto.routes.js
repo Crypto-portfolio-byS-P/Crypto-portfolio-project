@@ -5,6 +5,7 @@ const Watchlist = require('../models/Watchlist.model');
 const mongoose = require("mongoose");
 const isLoggedIn = require("../middleware/isLoggedIn.js")
 const axios = require("axios");
+const p3 = require('../config/backup')
 
 
 router.get("/charts", (req, res) => {
@@ -66,8 +67,8 @@ router.get('/portfolio', (req, res, next) => {
       let totalPortfolioValue = 0;
       let totalSpent = 0;
       let differencePercent = 0;
-      for (let i = 0; i < req.session.p1.length; i++) {
-        const firstListObject = req.session.p1[i]
+      for (let i = 0; i < p3.length; i++) {
+        const firstListObject = p3[i]
         for (let j = 0; j < coinsInfoFromDb.length; j++) {
           const portfolioListObject = coinsInfoFromDb[j]
           if (firstListObject.name == portfolioListObject.name) {
@@ -132,8 +133,8 @@ router.get('/watchlist', (req, res, next) => {
 
       let resultsArr = []
 
-      for (let i = 0; i < req.session.p1.length; i++) {
-        const firstListObject = req.session.p1[i]
+      for (let i = 0; i < p3.length; i++) {
+        const firstListObject = p3[i]
         for (let j = 0; j < watchlistCoinsFromDb.length; j++) {
           const portfolioListObject = watchlistCoinsFromDb[j]
           if (firstListObject.name == portfolioListObject.watchCoinName) {
@@ -146,14 +147,16 @@ router.get('/watchlist', (req, res, next) => {
       }
       res.render("watchlist/watchlist", { coins: resultsArr })
     })
-})
+});
 
 //POST Delete coin from watchlist
-router.post(`/:watchCoinId/delete`, isLoggedIn, (req, res, next) => {
-  const { watchCoinId } = req.params
+router.post(`/:id/watchlist/delete`, isLoggedIn, (req, res, next) => {
 
-  Watchlist.findByIdAndDelete(watchCoinId)
-    .then(() => res.redirect(`/watchlist`))
+  
+  const { id } = req.params
+
+  Watchlist.findByIdAndDelete(id)
+    .then(() => res.redirect(`/crypto/watchlist`))
     .catch((error) => next(error));
 });
 

@@ -35,16 +35,18 @@ router.get("/events", (req, res) => {
     );
 });
 
+// edit event
 router.get("/events/:id/edit", (req, res) => {
   const { id } = req.params;
 
   Event.findById(id)
-    .then((eventToEdit) => res.render("events/event-edit", eventToEdit))
+    .then((eventToEdit) => res.render("events/events-edit", eventToEdit))
     .catch((error) =>
       console.log(`Error while getting a single event for edit: ${error}`)
     );
 });
  
+
 router.post(
   "/events/:id/edit",
   fileUploader.single("event-cover-image"),

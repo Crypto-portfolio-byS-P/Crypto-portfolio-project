@@ -49,10 +49,10 @@
 
     {{!-- current code above --}}
 
-    <div class="container clearfix">
+    <div class="container clearfix overflow-y: scroll">
       <div class="table-responsive">
-        <table class="table text-center">
-          <thead>
+        <table class="table text-center ">
+          <thead >
             <tr>
               <th scope="col"></th>
               <th scope="col">Name</th>
@@ -60,11 +60,11 @@
               <th scope="col">Price Change 24h (%)</th>
               <th scope="col">Market Cap (EUR)</th>
             </tr>
-          </thead>
+          </thead >
           {{#each values.[2]}}
-          <tbody>
-            <tr>
-              <th scope="col"><img src={{this.image}} class="img-responsive " style="width: 50px; height: auto;" /></th>
+          <tbody class=" align-middle">
+            <tr class="p-0">
+              <th scope="col"><img src={{this.image}} class="img-responsive " style="width: 20%; height: auto;" /></th>
               <th scope="col">
                 <h1>{{this.name}}</h1>
               </th>

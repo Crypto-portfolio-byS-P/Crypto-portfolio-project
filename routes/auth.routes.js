@@ -178,7 +178,7 @@ router.post(`/:userId/edit`, (req, res, next) => {
   User.findByIdAndUpdate(userId, { username, email }, { new: true })
     .then(() => res.redirect(`/auth/profile`))
     .catch((error) => {
-      res.redirect("/profile");
+      res.redirect("/profile"), { errorMessage: "Unable to edit profile." };
     });
 });
 

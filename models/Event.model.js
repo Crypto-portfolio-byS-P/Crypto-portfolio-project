@@ -19,6 +19,9 @@ const eventSchema = new Schema(
     details: {
       type: String,
     },
+    createdBy: {
+    type: String,
+  },
     imageUrl: {
       type: String,
   },

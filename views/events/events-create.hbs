@@ -1,4 +1,4 @@
-
+{{log session.currentUser.email}}
 
 <h2>Create an event</h2>
 <div class="row">
@@ -35,6 +35,7 @@
                     <input type="file" name="event-cover-image" class="form-control-file" />
                 </label>
             </div>
+            <input type="hidden" name="createdBy" value="{{session.currentUser.email}}" />
 
             <button type="submit" class="btn btn-primary">Create</button>
         </form>

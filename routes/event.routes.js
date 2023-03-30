@@ -65,7 +65,7 @@ router.post(
     Event.findByIdAndUpdate(id, { name, location, date, details, imageUrl }, { new: true })
       .then(() => res.redirect(`/events`))
       .catch((error) =>
-        console.log(`Error while updating a single movie: ${error}`)
+        res.redirect("events/events-edit"), { errorMessage: "Unable to edit event." }
       );
   }
 );

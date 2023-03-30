@@ -5,28 +5,28 @@
     <div class="col-md-6">
         <form action="/events/create" method="post" enctype="multipart/form-data"> {{!-- !!! --}}
             <div class="form-group">
-                <label>Name:
-                    <input type="text" name="name" class="form-control" />
+                <label>Name*:
+                    <input type="text" name="name" class="form-control" required />
                 </label>
             </div>
 
             <div class="form-group">
-                <label>Location:
-                    <textarea name="location" class="form-control"> </textarea>
+                <label>Location*:
+                    <input name="location" class="form-control" required/>
                 </label>
             </div>
 
             <div class="form-group">
-                <label>Date:
+                <label>Date*:
                     <input type="datetime-local" id="event-time"
        name="date" value="current_date"
-       min="2018-06-07T00:00" />
+       min="2018-06-07T00:00" required/>
                 </label>
             </div>
 
             <div class="form-group">
                 <label>Details:
-                    <textarea name="details" cols="30" rows="4" class="form-control"> </textarea>
+                    <input name="details" cols="30" rows="4" class="form-control"/> 
                 </label>
             </div>
 
@@ -40,3 +40,5 @@
         </form>
     </div>
 </div>
+
+<p>* required</p>

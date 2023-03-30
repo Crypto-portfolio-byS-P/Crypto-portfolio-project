@@ -18,20 +18,11 @@ h1, nav {
   justify-content: center;
 }
 
-h1, .exchanges {
-  color: #26ff26
+h1{
+  color: purple
 }
 
 .card img {
   height: 200px;
   object-fit: cover;
 }
-
-p, h3 {
-  font-family: 'Chakra Petch', sans-serif;
-}
-
-p {
-  font-size:larger;
-}
-

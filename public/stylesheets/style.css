@@ -18,8 +18,12 @@ h1, nav {
   justify-content: center;
 }
 
-h1, .exchanges {
+h1, .exchanges, #trending {
   color: #26ff26
+}
+
+#trending {
+  font-family: 'Chakra Petch', sans-serif;
 }
 
 .card img {
@@ -33,6 +37,7 @@ p, h3 {
 
 p {
   font-size:larger;
+  margin-bottom: 0;
 }
 
 #allCoin {
@@ -40,3 +45,6 @@ p {
   height: 500px;
 }
 
+form {
+  margin-bottom: 0;
+}

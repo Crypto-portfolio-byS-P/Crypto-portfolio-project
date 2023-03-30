@@ -1,7 +1,13 @@
+
+
+
+{{log session.currentUser}}
+
 <h1>Events</h1>
 
-<div class="container"></div>
-<div class="row">
+<div class="container">
+    <h1 class="mb-5">Events</h1>
+<div class="row ">
     {{#each events}}
     <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
         <div class="shadow card h-100" style="width: 18rem;">
@@ -27,6 +33,8 @@
     {{else}}
     <p>There are no events yet!</p>
     {{/each}}
+    </div>
+    <button class="btn btn-success btn-block btn-lg gradient-custom-4 text-body mt-5" > <a href="/events/create"> Add Event</a></button>
 </div>
-<a href="/events/create"><button class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">  Add Event</button></a>
+
 </div>

@@ -46,12 +46,35 @@ router.get("/events", (req, res) => {
 router.get("/events/:id/edit", isLoggedIn, (req, res) => {
   const { id } = req.params;
 
-  Event.findById(id)
-    .then((eventToEdit) => res.render("events/events-edit", eventToEdit))
-    .catch((error) =>
-      console.log(`Error while getting a single event for edit: ${error}`)
-    );
+  
+
+//   Event.findById(id)
+//     .then((eventToEdit) => res.render("events/events-edit", eventToEdit))
+//     .catch((error) =>
+//       console.log(`Error while getting a single event for edit: ${error}`)
+//     );
+// });
+ 
+
+Event.findById(id)
+.then(eventToEdit => {
+  console.log("session user name", req.session.currentUser.email)
+console.log("Created by", eventToEdit.createdBy)
+console.log((req.session.currentUser.email == eventToEdit.createdBy ))
+  if(req.session.currentUser.email == eventToEdit.createdBy ){
+    res.render("events/events-edit", eventToEdit)
+  }else{
+    res.redirect("events/events-edit"), { errorMessage: "Unable to edit event." }
+  }
+  })
+  .catch((error) =>
+    console.log(`Error while getting a single event for edit: ${error}`)
+  );
+
 });
+
+
+
 
 router.post(
   "/events/:id/edit",
@@ -73,9 +96,9 @@ router.post(
       { new: true }
     )
       .then(() => res.redirect(`/events`))
-      .catch((error) => res.redirect("events/events-edit"), {
-        errorMessage: "Unable to edit event.",
-      });
+      .catch((error) =>
+        res.redirect("events/"), { errorMessage: "Unable to edit event." }
+      );
   }
 );
 

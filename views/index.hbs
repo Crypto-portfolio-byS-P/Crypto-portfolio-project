@@ -1,13 +1,5 @@
-<h1>Crypto Link</h1>
-<p>Where you can find all your crypto-info</p>
 
-<div class="m-2 ">
-  <script src="https://widgets.coingecko.com/coingecko-coin-heatmap-widget.js"></script>
-  <coingecko-coin-heatmap-widget height="400" locale="en"></coingecko-coin-heatmap-widget>
-</div>
-<br />
-<br />
-<br />
+
 
 {{!-- Current code below --}}
 
@@ -60,50 +52,55 @@
 
       {{!-- current code above --}}
 
-      <div class="container clearfix">
-        <div class="table-responsive" id="allCoin">
-          <table class="table text-center align-middle">
-            <div class="position-sticky">
-              <thead class="sticky-top bg-secondary">
+    <div class="container clearfix">
+      <h1>Crypto Link</h1>
+<p>Where you can find all your crypto-info</p>
 
-                <tr>
-                  <th scope="col">Rank</th>
-                  <th scope="col"></th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Current Price (EUR)</th>
-                  <th scope="col">Price Change 24h (%)</th>
-                  <th scope="col">Market Cap (EUR)</th>
-                  <th scope="col"></th>
-                  <th scope="col"></th>
-                </tr>
-
-              </thead>
-            </div>
-            {{#each values.[2]}}
-            <tbody>
-              <tr class="p-0">
-                <th class="col-1" scope="col">
-                  <p>{{this.market_cap_rank}}</p>
-                </th>
-                <th class="col-1" scope="col"><img src={{this.image}} class="img-responsive "
-                    style="width: 40px; height: auto;" /></th>
-                <th scope="col">
-                  <p>{{this.name}}</p>
-                </th>
-                <th scope="col">
-                  <p>{{this.current_price}}</p>
-                </th>
-                <th scope="col">
-                  <p>{{this.price_change_percentage_24h}}</p>
-                </th>
-                <th scope="col">{{this.market_cap}}</p>
-                </th>
-                <th class="col-xs-1" scope="col">
-                  <button type="button" class="shadow btn btn-success btn-block btn-xs gradient-custom-4 text-body"
-                    data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    + Portfolio
-                  </button>
-                  </form>
+<div class="mb-5 mt-5 ">
+  <script class=""src="https://widgets.coingecko.com/coingecko-coin-heatmap-widget.js"></script>
+  <coingecko-coin-heatmap-widget height="400" locale="en"></coingecko-coin-heatmap-widget>
+</div>
+      <div class="table-responsive" id="allCoin">
+        <table class="table text-center align-middle" >
+          <div class="position-sticky">
+          <thead class="sticky-top bg-secondary">
+            
+            <tr >
+              <th scope="col">Rank</th>
+              <th scope="col"></th>
+              <th scope="col">Name</th>
+              <th scope="col">Current Price (EUR)</th>
+              <th scope="col">Price Change 24h (%)</th>
+              <th scope="col">Market Cap (EUR)</th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+            </tr>
+           
+          </thead>
+           </div>
+          {{#each values.[2]}}
+          <tbody >
+            <tr class="p-0">
+               <th class="col-1" scope="col">
+                <p>{{this.market_cap_rank}}</p>
+              </th>
+              <th class="col-1" scope="col"><img src={{this.image}} class="img-responsive " style="width: 40px; height: auto;" /></th>
+              <th scope="col">
+                <p>{{this.name}}</p>
+              </th>
+              <th scope="col">
+                <p>{{this.current_price}}</p>
+              </th>
+              <th scope="col">
+                <p>{{this.price_change_percentage_24h}}</p>
+              </th>
+              <th scope="col">{{this.market_cap}}</p>
+              </th>
+                  <th class="col-xs-1" scope="col">
+                    <button type="button" class="shadow btn btn-success btn-block btn-xs gradient-custom-4 text-body" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                      + Portfolio
+                    </button>
+                </form>
                 </th>
                 <th>
 
@@ -132,8 +129,8 @@
   <br />
   <br />
 
-  <div class="container clearfix">
-    <H2>Top 7 trending coins in last 24h</H2>
+<div class="container clearfix" >
+<H2 id="trending" class="mt-5 mb-5">Top 7 trending coins in last 24h</H2>
 
 
     <table class="table table-striped table-dark table-sm">

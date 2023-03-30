@@ -2,9 +2,10 @@ const express = require("express");
 const router = express.Router();
 const Event = require("../models/Event.model");
 const fileUploader = require("../config/cloudinary.config");
+const isLoggedIn = require("../middleware/isLoggedIn");
 
 
-router.get("/events/create", (req, res) =>
+router.get("/events/create", isLoggedIn, (req, res) =>
   res.render("events/events-create")
 );
 
@@ -36,7 +37,7 @@ router.get("/events", (req, res) => {
 });
 
 // edit event
-router.get("/events/:id/edit", (req, res) => {
+router.get("/events/:id/edit", isLoggedIn, (req, res) => {
   const { id } = req.params;
 
   Event.findById(id)
@@ -69,7 +70,7 @@ router.post(
   }
 );
 
-router.post("/events/:eventId/delete", (req, res, next) => {
+router.post("/events/:eventId/delete", isLoggedIn, (req, res, next) => {
   const { eventId } = req.params;
 
   Event.findByIdAndDelete(eventId)

@@ -19,22 +19,21 @@ router.get("/learn", (req, res) => {
 
 // Add to portfolio: Display form
 
-router.post('/portfolio/add', async (req, res, next) => {
-
+router.post("/portfolio/add", isLoggedIn, async (req, res, next) => {
   const coin = {
     name: req.body.coinName,
     owned: req.body.amount,
     coinId: req.body.coinId,
     purchasedAt: req.body.purchasedAt,
-    addedBy: req.session.currentUser ? req.session.currentUser.email : '',
-    image: req.body.image
-  }
+    addedBy: req.session.currentUser ? req.session.currentUser.email : "",
+    image: req.body.image,
+  };
 
-  const coinInfoFromDb = await Coin.create(coin)
+  const coinInfoFromDb = await Coin.create(coin);
 
-  res.redirect("/crypto/portfolio")
-  res.render("portfolio/portfolio", { coinInfoFromDb })
-})
+  res.redirect("/crypto/portfolio");
+  res.render("portfolio/portfolio", { coinInfoFromDb });
+});
 
 //GET Edit coin
 router.get(`/:coinId/edit`, isLoggedIn, (req, res, next) => {

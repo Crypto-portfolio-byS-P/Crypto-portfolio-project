@@ -34,3 +34,9 @@ p, h3 {
 p {
   font-size:larger;
 }
+
+#allCoin {
+  overflow-y: scroll;
+  height: 500px;
+}
+

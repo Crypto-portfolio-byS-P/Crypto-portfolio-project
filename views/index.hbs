@@ -50,8 +50,8 @@
     {{!-- current code above --}}
 
     <div class="container clearfix">
-      <div class="table-responsive">
-        <table class="table text-center">
+      <div class="table-responsive" id="allCoin">
+        <table class="table text-center" >
           <thead>
             <tr>
               <th scope="col"></th>
@@ -78,9 +78,11 @@
               </th>
                   <th class="col-xs-1" scope="col">
                     <button type="button" class="shadow btn btn-success btn-block btn-xs gradient-custom-4 text-body" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                      Add to portfolio
+                      + Portfolio
                     </button>
                 </form>
+                </th>
+                <th>
 
                 <form method="POST" action="/crypto/portfolio/addToWatchlist">
                   <input type="hidden" name="watchCoinName" value="{{this.name}}" />
@@ -88,7 +90,7 @@
                   <input type="hidden" name="watchImage" value="{{this.image}}" />
                   <input type="hidden" name="watchCurrPrice" value="{{this.current_price}}" />
                   <input type="hidden" name="CreatedBy" value="{{session.currentUser.email}}" />
-                  <button class=" shadow btn btn-success btn-block btn-xs gradient-custom-4 text-body btn-danger" type="submit"> Add to Watch List </button>
+                  <button class=" shadow btn btn-success btn-block btn-xs gradient-custom-4 text-body btn-danger" type="submit"> + Watch List </button>
                 </form>
                
               </th>

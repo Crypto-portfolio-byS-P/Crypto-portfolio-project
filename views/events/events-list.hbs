@@ -17,6 +17,7 @@
                     class="btn btn-success btn-block btn-sm gradient-custom-4 text-body">Edit</a>
                 <form action="/events/{{_id}}/delete" method="POST">
                     <button class="btn btn-success btn-block btn-sm gradient-custom-4 text-body">Delete</button>
+                    </form>
 
                     {{!-- {{/if}} --}}
 
@@ -27,6 +28,5 @@
     <p>There are no events yet!</p>
     {{/each}}
 </div>
+<a href="/events/create"><button class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">  Add Event</button></a>
 </div>
-<button class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"> <a href="/events/create"> Add
-        Event</a></button>

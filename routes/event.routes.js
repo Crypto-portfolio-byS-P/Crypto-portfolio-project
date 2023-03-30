@@ -15,8 +15,6 @@ router.post(
   (req, res) => {
     const { name, location, date, details, createdBy } = req.body;
 
-    console.log("**********^^^^^^^^^*******", req.body)
-
     Event.create({ name, location, date, details, imageUrl: req.file.path, createdBy })
       .then((newlyCreatedEventFromDB) => {
         res.redirect('/events');
@@ -30,7 +28,6 @@ router.post(
 router.get("/events", (req, res) => {
   Event.find()
     .then((eventsFromDB) => {
-      // console.log(moviesFromDB);
       res.render("events/events-list.hbs", { events: eventsFromDB });
     })
     .catch((err) =>

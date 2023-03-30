@@ -40,7 +40,7 @@ router.get("/", async (req, res, next) => {
       p1 = req.session.p1
       p2 = req.session.p2
 
-      // console.log("i am here1", p1)
+
     }
   } else {
     // I don't have a last request time
@@ -53,7 +53,6 @@ router.get("/", async (req, res, next) => {
     req.session.p1 = p1
     req.session.p2 = p2
 
-    console.log(req.session)
     
   }
 

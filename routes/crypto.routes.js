@@ -104,7 +104,6 @@ router.get("/news", (req, res) => {
       res.render("news", { articles: response.data.articles });
     })
     .catch((error) => {
-      console.log(error);
       res.render("news", { articles: null });
     });
 });
@@ -120,7 +119,6 @@ router.post("/portfolio/addToWatchlist", isLoggedIn, async (req, res, next) => {
     watchImage: req.body.watchImage,
   };
 
-  console.log("this is your watch coin********", watchCoin);
 
   const watchCoinInfoFromDb = await Watchlist.create(watchCoin);
   res.redirect("/crypto/watchlist");

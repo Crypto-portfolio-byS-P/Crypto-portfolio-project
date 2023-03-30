@@ -171,7 +171,6 @@ router.get(`/:userId/edit`, isLoggedIn, (req, res, next) => {
 });
 
 router.post(`/:userId/edit`, (req, res, next) => {
-  console.log( req.params)
   const { userId } = req.params;
   const { username, email } = req.body;
 

@@ -1,4 +1,8 @@
 
+
+
+{{log session.currentUser}}
+
 <h1>Events</h1>
 
 <div class="container"></div>
@@ -12,9 +16,14 @@
                 <p class="card-text">{{location}}</p>
                 <p class="card-text">{{date}}</p>
                 <p class="card-text">{{details}}</p>
+
+                {{!-- {{#if session.currentUser}} --}}
                 <a href="/events/{{id}}/edit" class="btn btn-success btn-block btn-sm gradient-custom-4 text-body">Edit</a>
                     <form action="/events/{{_id}}/delete" method="POST">
                         <button class="btn btn-success btn-block btn-sm gradient-custom-4 text-body">Delete</button>
+               
+                {{!-- {{/if}} --}}
+                
             </div>
         </div>
     </div>

@@ -1,7 +1,7 @@
 <h1>Crypto Link</h1>
 <p>Where you can find all your crypto-info</p>
 
-<div>
+<div class="m-2">
   <script src="https://widgets.coingecko.com/coingecko-coin-heatmap-widget.js"></script>
   <coingecko-coin-heatmap-widget height="400" locale="en"></coingecko-coin-heatmap-widget>
 </div>
@@ -21,7 +21,7 @@
         <th scope="col">Market Cap (EUR)</th>
       </tr>
       </thead>
-      {{#each values.[0]}}
+      {{#each values.[2]}}
       <tbody>
       <tr>
         <th scope="col"><img src={{this.image}} class="img-responsive " style="width: 50px; height: auto;" /></th>
@@ -60,7 +60,7 @@
               <th scope="col">Price Change 24h (%)</th>
               <th scope="col">Market Cap (EUR)</th>
             </tr>
-          </thead >
+          </thead>
           {{#each values.[2]}}
           <tbody >
             <tr class="p-0">

@@ -13,9 +13,11 @@ router.post(
   "/events/create",
   fileUploader.single("event-cover-image"),
   (req, res) => {
-    const { name, location, date, details } = req.body;
+    const { name, location, date, details, createdBy } = req.body;
 
-    Event.create({ name, location, date, details, imageUrl: req.file.path })
+    console.log("**********^^^^^^^^^*******", req.body)
+
+    Event.create({ name, location, date, details, imageUrl: req.file.path, createdBy })
       .then((newlyCreatedEventFromDB) => {
         res.redirect('/events');
       })

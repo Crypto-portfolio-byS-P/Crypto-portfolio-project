@@ -1,3 +1,5 @@
+
+ {{#if coin}}
 <div class="d-grid gap-3">
     <div class="p-2 "><h3>Your Portfolio Total Value: EUR {{totalPortfolioValue}} </h3></div>
     <div class="p-2"><h4>Your portfolio is performing at {{differencePercent}}%</h4></div>
@@ -17,7 +19,9 @@
                     <th scope="col">Market Cap (EUR)</th>
                 </tr>
             </thead>
+              
             {{#each coin}}
+         
             <tbody>
                 <tr>
                     <th class="col"><img src={{this.image}} class="img-responsive "
@@ -46,7 +50,14 @@
                     </th>
     </div>
 </div>
+
+  
 {{/each}}
+ {{else}}
+    <p>There are no coins in your portfolio yet!</p>
+    <a href="/" class="btn btn-success btn-block btn-sm gradient-custom-4 text-body">Add Coins</a>
+
+  {{/if}} 
 </div>
 
 </div>

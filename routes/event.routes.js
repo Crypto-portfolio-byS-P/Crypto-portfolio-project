@@ -68,6 +68,14 @@ router.post(
       );
   }
 );
+
+router.post("/events/:eventId/delete", (req, res, next) => {
+  const { eventId } = req.params;
+
+  Event.findByIdAndDelete(eventId)
+    .then(() => res.redirect("/events"))
+    .catch((error) => next(error));
+});
  
 
 module.exports = router;

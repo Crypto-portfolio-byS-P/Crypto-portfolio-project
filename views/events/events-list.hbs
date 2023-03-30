@@ -11,7 +11,9 @@
                 <p class="card-text">{{location}}</p>
                 <p class="card-text">{{date}}</p>
                 <p class="card-text">{{details}}</p>
-                <a href="/events/{{id}}/edit" class="btn btn-primary">Edit</a>
+                <a href="/events/{{id}}/edit" class="btn btn-success btn-block btn-sm gradient-custom-4 text-body">Edit</a>
+                    <form action="/events/{{_id}}/delete" method="POST">
+                        <button class="btn btn-success btn-block btn-sm gradient-custom-4 text-body">Delete</button>
             </div>
         </div>
     </div>
@@ -20,4 +22,4 @@
     {{/each}}
     <hr />
 </div>
-<a class="nav-link" href="/events/create">Add movie</a>
+<button class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" > <a href="/events/create"> Add Event</a></button>

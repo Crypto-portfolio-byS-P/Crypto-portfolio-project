@@ -1,0 +1,23 @@
+
+<h1>Events</h1>
+<hr>
+<div class="row">
+    {{#each events}}
+    <div class="col-md-4 mb-5">
+        <div class="card" style="width: 18rem;">
+            <img src="{{imageUrl}}" class="card-img-top" alt="{{title}}">
+            <div class="card-body">
+                <h5 class="card-title">{{name}}</h5>
+                <p class="card-text">{{location}}</p>
+                <p class="card-text">{{date}}</p>
+                <p class="card-text">{{details}}</p>
+                <a href="/events/{{id}}/edit" class="btn btn-primary">Edit</a>
+            </div>
+        </div>
+    </div>
+    {{else}}
+    <p>There are no events yet!</p>
+    {{/each}}
+    <hr />
+</div>
+<a class="nav-link" href="/events/create">Add movie</a>

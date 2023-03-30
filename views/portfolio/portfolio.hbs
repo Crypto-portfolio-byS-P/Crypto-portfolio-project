@@ -1,3 +1,7 @@
+{{log coin}}
+
+
+
 {{#if coin}}
 <div class="d-grid gap-3">
     <div class="p-2 ">
@@ -18,8 +22,9 @@
                             <th scope="col"></th>
                             <th scope="col">Name</th>
                             <th scope="col">Current Price (EUR)</th>
-                            <th scope="col">Price Change % 24h (%)</th>
-                            <th scope="col">Market Cap (EUR)</th>
+                            <th scope="col">Purchased At (EUR)</th>
+                            <th scope="col">Amount Owned </th>
+                            <th scope="col">Current Value (EUR)</th>
                         </tr>
                     </thead>
 
@@ -33,10 +38,13 @@
                                 <h4>{{this.name}}</h4>
                             </th>
                             <th class="col">
-                                <p>{{this.owned}}</p>
+                                <p>{{this.price}}</p>
                             </th>
                             <th class="col">
                                 <p>{{this.purchasedAt}}</p>
+                            </th>
+                            <th class="col">
+                                <p>{{this.owned}}</p>
                             </th>
                             <th class="col">{{currentValue}}</p>
                             </th>

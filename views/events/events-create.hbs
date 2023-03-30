@@ -40,3 +40,65 @@
 </div>
 
 <p>* required</p>
+
+
+
+
+
+
+
+
+{{!-- <div id="event-create">
+
+  <section class="vh-100 bg-image" style="dark">
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+      <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+            <div class="card shadow" style="border-radius: 15px;">
+              <div class="card-body p-5">
+                <h2 class="text-uppercase text-center mb-5">Create your event</h2>
+
+                <form action="/events/create" method="POST">
+
+                  <div class="form-outline mb-4">
+                    <input type="text" name="name" class="form-control form-control-lg" />
+                    <label class="form-label">Event Name</label>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <input type="datetime-local" id="event-time" name="date" value="current_date" min="2018-06-07T00:00">
+                    <label class="form-label">Date*</label>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <input type="text" name="location" class="form-control form-control-lg" />
+                    <label class="form-label">Location*</label>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <input type="textarea" name="details" class="form-control form-control-lg" />
+                    <label class="form-label">Event Details*</label>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <input type="file" name="event-cover-image" class="form-control-file" required/>
+                    <label class="form-label">Add Event Cover Image*</label>
+                  </div>
+                  <input type="hidden" name="createdBy" value="{{session.currentUser.email}}" />
+                  
+
+                  <div class="d-flex justify-content-center">
+                    <button type="button submit"
+                      class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Create Event</button>
+                  </div>
+
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> --}}

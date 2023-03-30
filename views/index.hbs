@@ -1,56 +1,6 @@
-
-
-
-{{!-- Current code below --}}
-
-{{!-- <div class="container clearfix">
-  <div class="table-responsive">
-    <table class="table text-center">
-      <thead>
-        <tr>
-          <th scope="col"></th>
-          <th scope="col">Name</th>
-          <th scope="col">Current Price (EUR)</th>
-          <th scope="col">Price Change % 24h (%)</th>
-          <th scope="col">Market Cap (EUR)</th>
-        </tr>
-      </thead>
-      {{#each values.[2]}}
-      <tbody>
-        <tr>
-          <th scope="col"><img src={{this.image}} class="img-responsive " style="width: 50px; height: auto;" /></th>
-          <th scope="col">
-            <h1>{{this.name}}</h1>
-          </th>
-          <th scope="col">
-            <p>{{this.current_price}}</p>
-          </th>
-          <th scope="col">
-            <p>{{this.price_change_percentage_24h}}</p>
-          </th>
-          <th scope="col">{{this.market_cap}}</p>
-          </th>
-          <th scope="col">
-            <form method="POST" action="/crypto/portfolio/add">
-
-              <label> Amount owned:
-                <input type="number" name="amount" />
-              </label>
-              <label> Price Purchased At:
-                <input type="number" name="purchasedAt" />
-              </label>
-              <input type="hidden" name="coinName" value="{{this.name}}" />
-              <input type="hidden" name="coinId" value="{{this.id}}" />
-              <input type="hidden" name="image" value="{{this.image}}" />
-              <input type="hidden" name="CreatedBy" value="{{req.session.currentUser.email}}" />
-              <button type="submit"> Add to portfolio </button>
-            </form>
-            </p>
-          </th>
-        </tr>
-      </tbody> --}}
-
-      {{!-- current code above --}}
+{{#if session.currentUser}}
+<h1>you are logged in</h1>
+{{/if}}
 
     <div class="container clearfix">
       <h1>Crypto Link</h1>
@@ -96,25 +46,39 @@
               </th>
               <th scope="col">{{this.market_cap}}</p>
               </th>
+             
                   <th class="col-xs-1" scope="col">
-                    <button type="button" class="shadow btn btn-success btn-block btn-xs gradient-custom-4 text-body" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                     
+                    <button type="button" class="shadow btn btn-success btn-block btn-xs gradient-custom-4 text-body" onclick="
+                    openModal(
+                      '{{this.id}}' , 
+                      '{{this.name}}' , 
+                      '{{this.image}}' , 
+                      '{{this.current_price}}' , 
+                      '{{req.session.currentUser.email}}'
+                    )">
                       + Portfolio
                     </button>
+                   
                 </form>
                 </th>
                 <th>
 
+
                   <form method="POST" action="/crypto/portfolio/addToWatchlist">
-                    <input type="hidden" name="watchCoinName" value="{{this.name}}" />
-                    <input type="hidden" name="watchCoinId" value="{{this.id}}" />
-                    <input type="hidden" name="watchImage" value="{{this.image}}" />
+                    <input type="hidden" name="coinName" value="{{this.name}}" />
+                    <input type="hidden" name="coinId" value="{{this.id}}" />
+                    <input type="hidden" name="image" value="{{this.image}}" />
                     <input type="hidden" name="watchCurrPrice" value="{{this.current_price}}" />
                     <input type="hidden" name="CreatedBy" value="{{session.currentUser.email}}" />
+                    {{!-- {{#if session.currentUser}} --}}
                     <button class=" shadow btn btn-success btn-block btn-xs gradient-custom-4 text-body btn-danger"
                       type="submit"> + Watch List </button>
+                      {{!-- {{/if}} --}}
                   </form>
 
                 </th>
+               
               </tr>
             </tbody>
         </div>
@@ -172,7 +136,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form method="POST" action="/crypto/portfolio/add">
+            <form method="POST" id="add-to-portfolio-form" action="/crypto/portfolio/add">
 
               <label> Amount owned:
                 <input style="width: 100px" type="number" step="any" name="amount" />
@@ -183,10 +147,12 @@
                   <input style="width: 100px" type="number" step="any" name="purchasedAt" />
               </div>
               </label>
-              <input type="hidden" name="coinName" value="{{this.item.name}}" />
-              <input type="hidden" name="coinId" value="{{this.item.id}}" />
-              <input type="hidden" name="image" value="{{this.item.image}}" />
-              <input type="hidden" name="CreatedBy" value="{{req.session.currentUser.email}}" />
+              
+                    <input type="hidden" id="coinName" name="coinName" value="" />
+                    <input type="hidden" id="coinId" name="coinId" value="" />
+                    <input type="hidden" id="image" name="image" value="" />
+                    <input type="hidden" id="watchCurrPrice" name="watchCurrPrice" value="" />
+                    <input type="hidden" id="CreatedBy" name="CreatedBy" value="" />
           </div>
           <div class="modal-footer">
             <button type="submit" class="btn btn-success btn-block btn-xs gradient-custom-4 text-body">
@@ -196,3 +162,20 @@
         </div>
       </div>
     </div>
+    <script>
+      function openModal(id, name, image, currentPrice, email){
+        //="add-to-portfolio-form
+        document.getElementById('coinId').value = id
+        document.getElementById('coinName').value = name
+        document.getElementById('image').value = image
+        document.getElementById('watchCurrPrice').value = currentPrice
+        document.getElementById('CreatedBy').value = email
+        
+
+        const modal = new bootstrap.Modal(
+          document.getElementById('exampleModal')
+        )
+        modal.show()
+
+      }
+    </script>

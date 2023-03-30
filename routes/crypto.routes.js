@@ -20,6 +20,8 @@ router.get("/learn", (req, res) => {
 // Add to portfolio: Display form
 
 router.post("/portfolio/add", isLoggedIn, async (req, res, next) => {
+
+  console.log(req.body)
   const coin = {
     name: req.body.coinName,
     owned: req.body.amount,

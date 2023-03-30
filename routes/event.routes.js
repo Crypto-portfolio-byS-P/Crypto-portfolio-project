@@ -15,6 +15,10 @@ router.post(
   (req, res) => {
     const { name, location, date, details, createdBy } = req.body;
 
+// console.log(req.body)
+// console.log("this is req file **********",req)
+
+
     Event.create({
       name,
       location,
@@ -58,14 +62,15 @@ router.get("/events/:id/edit", isLoggedIn, (req, res) => {
 
 Event.findById(id)
 .then(eventToEdit => {
-  console.log("session user name", req.session.currentUser.email)
-console.log("Created by", eventToEdit.createdBy)
-console.log((req.session.currentUser.email == eventToEdit.createdBy ))
+//   console.log("session user name", req.session.currentUser.email)
+// console.log("Created by", eventToEdit.createdBy)
+// console.log((req.session.currentUser.email == eventToEdit.createdBy ))
   if(req.session.currentUser.email == eventToEdit.createdBy ){
     res.render("events/events-edit", eventToEdit)
-  }else{
-    res.redirect("events/events-edit"), { errorMessage: "Unable to edit event." }
-  }
+  } 
+  // else {
+  //   return res.status(401).send('Unauthorized: Only the creator can edit this skill.');
+  // }
   })
   .catch((error) =>
     console.log(`Error while getting a single event for edit: ${error}`)

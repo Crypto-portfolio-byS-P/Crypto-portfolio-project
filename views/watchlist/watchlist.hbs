@@ -1,10 +1,11 @@
-<h1>Welcome to your watchlist</h1>
+
 
 {{#if coins}}
 
 <div class="p-2">
 
     <div class="container clearfix">
+        <h1 class="mb-5">Watchlist</h1>
         <div class="table-responsive">
             <table class="table text-center">
                 <thead>
@@ -13,6 +14,8 @@
                         <th scope="col">Name</th>
                         <th scope="col">Price when added (EUR)</th>
                         <th scope="col">Current price (EUR)</th>
+                        <th scope="col"></th>
+
                     </tr>
                 </thead>
 
@@ -42,7 +45,7 @@
 
     {{/each}}
     {{else}}
-    <p>There are no coins in your watchlist yet!</p>
+    <h2>There are no coins in your watchlist yet!</h2>
     <a href="/" class="btn btn-success btn-block btn-sm gradient-custom-4 text-body">Add Coins</a>
 
     {{/if}}

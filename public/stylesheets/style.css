@@ -31,7 +31,7 @@ h1, .exchanges, #trending {
   object-fit: cover;
 }
 
-p, h3 {
+p, h3, h2 {
   font-family: 'Chakra Petch', sans-serif;
 }
 

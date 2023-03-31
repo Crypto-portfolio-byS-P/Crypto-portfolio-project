@@ -68,9 +68,6 @@ Event.findById(id)
   if(req.session.currentUser.email == eventToEdit.createdBy ){
     res.render("events/events-edit", eventToEdit)
   } 
-  // else {
-  //   return res.status(401).send('Unauthorized: Only the creator can edit this skill.');
-  // }
   })
   .catch((error) =>
     console.log(`Error while getting a single event for edit: ${error}`)

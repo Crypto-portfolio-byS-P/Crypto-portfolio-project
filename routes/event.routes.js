@@ -30,9 +30,9 @@ router.post(
       .then((newlyCreatedEventFromDB) => {
         res.redirect("/events");
       })
-      .catch((error) =>
-        console.log(`Error while creating a new event: ${error}`)
-      );
+      .catch((error) => res.redirect("/events/create"), {
+        errorMessage: "Unable to edit event.",
+      });
   }
 );
 

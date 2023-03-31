@@ -12,30 +12,33 @@
 
 ### To add coins to portfolio user needs to press +Portfolio button next to crypto currency that they own, then in the pop up form user needs to add amount of that coin that they own and the price at which it was purchased. Coin will be added to your portfolio and will start keeping track of how your investment is progressing. It will compare purchase price with current market price and will give you performance in percentage.
 
-## Users can add coins they are interested in to their watchlist and see how the price is changing since it was added to the watchlist.
+### Users can add coins they are interested in to their watchlist and see how the price is changing since it was added to the watchlist.
 
-## Users can also check and create crypto related events in the events page.
+### Users can also check and create crypto related events in the events page.
 
-## News page provides live up to date crypto related news from around the world.
+### News page provides live up to date crypto related news from around the world.
 
-## In Charts page users can find current and hystorical crypto data in a form of charts
+### In Charts page users can find current and hystorical crypto data in a form of charts
 
 ## Quick Start:
 
 #### Run these commands in your terminal to set up enviroment for the application:
 
-##### npm install in your terminal
+##### *npm install in your terminal
 
-##### npm install cloudinary multer multer-storage-cloudinary
+##### *npm install cloudinary multer multer-storage-cloudinary
 
-#### create an account on cloudinary.com to receive cloudinary name, key and secret
+#### *create an account on cloudinary.com to receive cloudinary name, key and secret
 
-##### create .env file and add enviromental variables with values from previous step for Cloudinary to work:
+##### *create .env file and add enviromental variables with values from previous step for Cloudinary to work:
         *CLOUDINARY_NAME
         *CLOUDINARY_KEY
         *CLOUDINARY_SECRET
 
 #### once setup is finished to start the app run npm run dev in your terminal
+
+### Link to Demo
+[Crypto Link](https://crypto-link.adaptable.app/)
 
 ![Alt Text](./public/images/screenshot.png)
 

@@ -1,40 +1,35 @@
-
-
-
-{{log session.currentUser}}
-
-
-
 <div class="container">
     <h1 class="mb-5">Events</h1>
-<div class="row ">
-    {{#each events}}
-    <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
-        <div class="shadow card h-100" style="width: 18rem;">
-            <img src="{{imageUrl}}" class="card-img-top m-h-50 same-size-img text-truncate" alt="{{title}}">
-            {{!-- <div class="card-body"> --}}
-                <h5 class="card-title">{{name}}</h5>
-                <p class="card-text">{{location}}</p>
-                <p class="card-text">{{date}}</p>
-                <p class="card-text">{{details}}</p>
-
-                {{!-- {{#if session.currentUser}} --}}
-                <a href="/events/{{id}}/edit"
-                    class="btn btn-success btn-block btn-sm gradient-custom-4 text-body">Edit</a>
-                <form action="/events/{{_id}}/delete" method="POST">
-                    <button class="btn btn-success btn-block btn-sm gradient-custom-4 text-body">Delete</button>
+    <div class="row ">
+        {{#each events}}
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
+            <div class="shadow card h-100" style="width: 18rem;">
+                <img src="{{imageUrl}}" class="card-img-top m-h-50 same-size-img text-truncate" alt="{{title}}">
+                <div class="card-body">
+                    <h5 class="card-title">{{name}}</h5>
+                    <div class="form-outline mb-4">
+                        <p class="card-text">{{location}}</p>
+                        <p class="card-text">{{date}}</p>
+                    </div>
+                    <div class="form-outline mb-4">
+                        <p class="card-text">{{details}}</p>
+                    </div>
+                    <div class="form-outline btn-group">
+                    <a href="/events/{{id}}/edit"><button class="btn btn-success btn-block btn-sm gradient-custom-4 text-body btn-space">
+                        Edit</button></a>
+                    <form action="/events/{{_id}}/delete" method="POST">
+                        <button class="btn btn-success btn-block btn-sm gradient-custom-4 text-body btn-space">Delete</button>
                     </form>
-
-                    {{!-- {{/if}} --}}
-
+                    </div>
+                </div>
             </div>
         </div>
+        {{else}}
+        <p>There are no events yet!</p>
+        {{/each}}
     </div>
-    {{else}}
-    <p>There are no events yet!</p>
-    {{/each}}
-    </div>
-    <button class="btn btn-success btn-block btn-lg gradient-custom-4 text-body mt-5" > <a href="/events/create"> Add Event</a></button>
+    <button class="btn btn-success btn-block btn-lg gradient-custom-4 text-body mt-5"> <a href="/events/create"> Add
+            Event</a></button>
 </div>
 
 </div>

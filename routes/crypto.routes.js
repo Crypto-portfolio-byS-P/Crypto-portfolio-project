@@ -134,6 +134,8 @@ router.get("/news", (req, res) => {
 // Add coin to the watchlist
 
 router.post("/portfolio/addToWatchlist", isLoggedIn, async (req, res, next) => {
+console.log(req.body)
+
   const watchCoin = {
     watchCoinName: req.body.watchCoinName,
     watchCoinId: req.body.watchCoinId,
